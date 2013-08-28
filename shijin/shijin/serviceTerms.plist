@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>textFont</key>
+		<string>14</string>
+		<key>height</key>
+		<string>30</string>
+		<key>contentStr</key>
+		<string>服务条款</string>
+	</dict>
+	<dict>
+		<key>textFont</key>
+		<string>11</string>
+		<key>height</key>
+		<string>90</string>
+		<key>contentStr</key>
+		<string>      欢迎您成为时金系统的注册会员，在您注册成为我们的会员后，将享有我们提供的响应服务，但同时也要最受相应的规则和履行一定的义务。请您务必在注册之前认真阅读全部服务条款内容，如有任何疑问，可向时金系统咨询，您一但注册成为我们的会员，则意味着已完全接受一下条款。</string>
+	</dict>
+	<dict>
+		<key>textFont</key>
+		<string>12</string>
+		<key>height</key>
+		<string>30</string>
+		<key>contentStr</key>
+		<string>1.注册用户的权利</string>
+	</dict>
+	<dict>
+		<key>textFont</key>
+		<string>11</string>
+		<key>height</key>
+		<string>40</string>
+		<key>contentStr</key>
+		<string>（1）用户有权拥有自己在时金系统的账户及密码，并有权使用自己的账户及比吗随时登录网站。</string>
+	</dict>
+	<dict>
+		<key>textFont</key>
+		<string>11</string>
+		<key>height</key>
+		<string>80</string>
+		<key>contentStr</key>
+		<string>（2）用户可以根据自身需求对注册账户进行充值和提取现金，同时务必妥善保管自己的账户及密码信息，因个人原因导致账户信息泄露的时金系统不承担任何法律责任。如您发现自己的个人信息泄密，请您立即联络网站客服，以便时金系统采取相应措施。</string>
+	</dict>
+	<dict>
+		<key>textFont</key>
+		<string>11</string>
+		<key>height</key>
+		<string>25</string>
+		<key>contentStr</key>
+		<string>（3）用户可以在留言模块发表本条款中允许的言论。</string>
+	</dict>
+	<dict>
+		<key>textFont</key>
+		<string>12</string>
+		<key>height</key>
+		<string>30</string>
+		<key>contentStr</key>
+		<string>2.注册用户的义务</string>
+	</dict>
+	<dict>
+		<key>textFont</key>
+		<string>11</string>
+		<key>height</key>
+		<string>100</string>
+		<key>contentStr</key>
+		<string>      注册用户有义务在注册时提供自己的真实资料，并保证诸如电子邮件地址、联系电话等内容的有效性及安全性，保证时金系统可以通过上述联系方式与自己进行联系。同时，用户也有义务在相关资料实际变更时及时更新有关注册资料。用户保证不以他人资料在时金系统进行注册或认证。如果用户提供的资料不准确，不真实，不合法有效，时金系统将保留结束用户使用各项服务的权利。</string>
+	</dict>
+</array>
+</plist>

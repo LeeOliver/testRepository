@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>1</key>
+	<string>reservation_ expert_advice.png</string>
+	<key>2</key>
+	<string>reservation_education.png</string>
+	<key>3</key>
+	<string>reservation_health_care.png</string>
+	<key>4</key>
+	<string>reservation_religious_beliefs.png</string>
+	<key>5</key>
+	<string>reservation_cell_house.png</string>
+	<key>6</key>
+	<string>reservation_house_recreation.png</string>
+	<key>7</key>
+	<string>reservation_financial_business.png</string>
+	<key>8</key>
+	<string>reservation_creative_services.png</string>
+	<key>9</key>
+	<string>reservation_technical_support.png</string>
+	<key>10</key>
+	<string>reservation_supervision_inspection.png</string>
+	<key>11</key>
+	<string>reservation_socil_report.png</string>
+	<key>12</key>
+	<string>reservation_other.png</string>
+	<key>13</key>
+	<string>reservation_art.png</string>
+</dict>
+</plist>
