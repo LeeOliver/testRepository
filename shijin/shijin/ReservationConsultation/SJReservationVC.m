@@ -719,14 +719,6 @@
         
         [_startOrEndBtn removeTarget:self action:@selector(meetingStart) forControlEvents:UIControlEventTouchUpInside];
         [_startOrEndBtn addTarget:self action:@selector(meetingEnd) forControlEvents:UIControlEventTouchUpInside];
-
-//        [self initUIFour];
-//        [AppDelegate App].kUIflag = kRESERVATIONUI_IV;
-//        [self updateViewUI];
-//        _kTotalTimeM = 0;
-//        _kTotalTimeS = 0;
-//        _kCountFund  = 0;
-//        [[SJTimeEngine shareInstance]loopTimerByTime:@"60" delegate:self sel:@selector(meeting)];
     }
 }
 

@@ -35,7 +35,6 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithRed:212/255.0f green:212/255.0f blue:212/255.0f alpha:1.0f];
     isShowTable = NO;
-//    isShowWaitView = YES;
     isCountTimeView = NO;
     
     [self initPayment];
@@ -207,154 +206,8 @@
 //收费界面
 - (void)initReceive
 {
-//    _waitView = [[UIView alloc]initWithFrame:CGRectMake(0, 50, MAINSCREENWIDTH, MAINSCREENHEIGHT-20-50-50)];
-//    _waitView.backgroundColor = [UIColor clearColor];
-//    _waitView.tag = WAITINGVIEW;
-    
     _receive = [[UIView alloc]initWithFrame:CGRectMake(0, 30, MAINSCREENWIDTH, MAINSCREENHEIGHT-20-30-50)];
     _receive.tag = RECEIVEVIEWTAG;
-    
-//    UIImageView *boxImg = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"reservation_big_box.png"]];
-//    boxImg.frame = CGRectMake(0, 0, 287, 261);
-//    boxImg.center = CGPointMake(MAINSCREENWIDTH / 2, 185);
-//    [_waitView addSubview:boxImg];
-    
-//    UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 100, 30)];
-//    title.text = @"等待客户";
-//    title.center = CGPointMake(boxImg.frame.size.width/2, 15);
-//    title.backgroundColor = [UIColor clearColor];
-//    title.textColor = [UIColor whiteColor];
-//    title.textAlignment = NSTextAlignmentCenter;
-//    _receive.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"reservation_back_pic.png"]];
-//    [boxImg addSubview:title];
-//    
-//    UIImageView *waitImg = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"reservation_wait.png"]];
-//    waitImg.frame = CGRectMake(0, 0, 153, 100);
-//    waitImg.center = CGPointMake(boxImg.frame.size.width/2, boxImg.frame.size.height/5*3);
-//    [boxImg addSubview:waitImg];
-//    //请求界面
-//    _requestView = [[UIView alloc]initWithFrame:CGRectMake(0, 50, MAINSCREENWIDTH, MAINSCREENHEIGHT-20-50-50)];
-//    _requestView.backgroundColor = [UIColor clearColor];
-//    _requestView.tag = REQUESTVIEW;
-//    
-//    UIImageView *requestImg = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"reservation_box.png"]];
-//    requestImg.frame = CGRectMake(0, 0, 287, 175);
-//    requestImg.center = CGPointMake(MAINSCREENWIDTH / 2, 145);
-//    [_requestView addSubview:requestImg];
-//    
-//    float x = requestImg.frame.size.width;
-//    float y = requestImg.frame.size.height;
-//    
-//    UIImageView *line = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"reservation_line.png"]];
-//    line.frame = CGRectMake(0, 0, 285, 1);
-//    line.center = CGPointMake(x/2, y/3);
-//    [requestImg addSubview:line];
-//    
-//    UILabel *requestTitle = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 278, 30)];
-//    requestTitle.text = @"服务状态 ：请求";
-//    requestTitle.textColor = [UIColor whiteColor];
-//    requestTitle.backgroundColor = [UIColor clearColor];
-//    requestTitle.center = CGPointMake(x/2, 15);
-//    requestTitle.textAlignment = NSTextAlignmentCenter;
-//    [requestImg addSubview:requestTitle];
-//    
-//    _requestServer = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 278, 30)];
-//    _requestServer.text = [NSString stringWithFormat:@"服务商:%@", _requesterStr];
-//    _requestServer.textColor = [UIColor blueColor];
-//    _requestServer.backgroundColor = [UIColor clearColor];
-//    _requestServer.center = CGPointMake(x/2, 45);
-//    [requestImg addSubview:_requestServer];
-//    
-//    _requestTime = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 278, 30)];
-//    _requestTime.text = [NSString stringWithFormat:@"预约服务时间:%@", _serviceTime];
-//    _requestTime.textColor = [UIColor blueColor];
-//    _requestTime.backgroundColor = [UIColor clearColor];
-//    _requestTime.center = CGPointMake(x/2, 15*6);
-//    [requestImg addSubview:_requestTime];
-//    
-//    UIButton *acceptBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [acceptBtn setBackgroundImage:[UIImage imageNamed:@"reservation_accept.png"] forState:UIControlStateNormal];
-//    [acceptBtn addTarget:self action:@selector(acceptAction) forControlEvents:UIControlEventTouchUpInside];
-//    acceptBtn.frame = CGRectMake(0, 0, 186, 30);
-//    acceptBtn.center = CGPointMake(MAINSCREENWIDTH/2, 360);
-//    [_requestView addSubview:acceptBtn];
-//    
-//    UILabel *requestBtnTitle = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 100, 30)];
-//    requestBtnTitle.text = @"接受";
-//    requestBtnTitle.textColor = [UIColor whiteColor];
-//    requestBtnTitle.backgroundColor = [UIColor clearColor];
-//    requestBtnTitle.center = CGPointMake(105, 15);
-//    [acceptBtn addSubview:requestBtnTitle];
-//    requestBtnTitle.textAlignment = NSTextAlignmentCenter;
-//    
-//    //----------------------/计时界面
-//    _timingView   = [[UIView alloc]initWithFrame:CGRectMake(0, 50, MAINSCREENWIDTH, MAINSCREENHEIGHT-20-50-50)];
-//    _timingView.backgroundColor = [UIColor clearColor];
-//    _timingView.tag = TIMINGVIEW;
-//    UIImageView *timingImg = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"reservation_box.png"]];
-//    timingImg.frame = CGRectMake(0, 0, 287, 175);
-//    timingImg.center = CGPointMake(MAINSCREENWIDTH / 2, 145);
-//    [_timingView addSubview:timingImg];
-//    
-////    float x = requestImg.frame.size.width;
-////    float y = requestImg.frame.size.height;
-//    
-//    UIImageView *line1 = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"reservation_line.png"]];
-//    line1.frame = CGRectMake(0, 0, 285, 1);
-//    line1.center = CGPointMake(x/2, y/3);
-//    [timingImg addSubview:line1];
-//    
-//    _timingTitle = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 278, 30)];
-//    _timingTitle.text = @"服务状态 ：等待回应";
-//    _timingTitle.textColor = [UIColor whiteColor];
-//    _timingTitle.backgroundColor = [UIColor clearColor];
-//    _timingTitle.center = CGPointMake(x/2, 15);
-//    _timingTitle.textAlignment = NSTextAlignmentCenter;
-//    [timingImg addSubview:_timingTitle];
-//    
-//    _timingTimeStr = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 278, 30)];
-//    _timingTimeStr.text = [NSString stringWithFormat:@"服务商:%@", _requesterStr];
-//    _timingTimeStr.textColor = [UIColor blueColor];
-//    _timingTimeStr.backgroundColor = [UIColor clearColor];
-//    _timingTimeStr.center = CGPointMake(x/2, 45);
-//    [timingImg addSubview:_timingTimeStr];
-//
-//    _timingLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 278, 30)];
-//    _timingLabel.text = [NSString stringWithFormat:@"服务时间:0"];
-//    _timingLabel.textColor = [UIColor blueColor];
-//    _timingLabel.backgroundColor = [UIColor clearColor];
-//    _timingLabel.center = CGPointMake(x/2, 15*6);
-//    [timingImg addSubview:_timingLabel];
-//
-////    _requestServer = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 278, 30)];
-////    _requestServer.text = [NSString stringWithFormat:@"服务商:%@", _requesterStr];
-////    _requestServer.textColor = [UIColor blueColor];
-////    _requestServer.backgroundColor = [UIColor clearColor];
-////    _requestServer.center = CGPointMake(x/2, 45);
-////    [timingImg addSubview:_requestServer];
-////    
-////    _requestTime = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 278, 30)];
-////    _requestTime.text = [NSString stringWithFormat:@"预约服务时间:%@", _serviceTime];
-////    _requestTime.textColor = [UIColor blueColor];
-////    _requestTime.backgroundColor = [UIColor clearColor];
-////    _requestTime.center = CGPointMake(x/2, 15*6);
-////    [timingImg addSubview:_requestTime];
-//    
-////    UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-////    [backBtn setBackgroundImage:[UIImage imageNamed:@"reservation_accept.png"] forState:UIControlStateNormal];
-////    [backBtn addTarget:self action:@selector(acceptAction) forControlEvents:UIControlEventTouchUpInside];
-////    backBtn.frame = CGRectMake(0, 0, 186, 30);
-////    backBtn.center = CGPointMake(MAINSCREENWIDTH/2, 360);
-////    [_requestView addSubview:backBtn];
-////    
-////    UILabel *backBtnTitle = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 100, 30)];
-////    backBtnTitle.text = @"";
-////    backBtnTitle.textColor = [UIColor whiteColor];
-////    backBtnTitle.backgroundColor = [UIColor clearColor];
-////    backBtnTitle.center = CGPointMake(105, 15);
-////    [acceptBtn addSubview:backBtnTitle];
-////    backBtnTitle.textAlignment = NSTextAlignmentCenter;
-
 }
 - (void)updateViewUI
 {
@@ -456,42 +309,6 @@
     }
     else
     {
-//        if (isShowWaitView) {
-//            if ([self.view viewWithTag:REQUESTVIEW]){
-//                [_requestView removeFromSuperview];
-//            }
-//            if ([self.view viewWithTag:WAITINGVIEW]) {
-//                return;
-//            }
-//            [_receive addSubview:_waitView];
-//        }
-//        else{
-//            if ([self.view viewWithTag:WAITINGVIEW]){
-//                [_waitView removeFromSuperview];
-//            }
-//
-//            if (isCountTimeView) {
-//                if ([self.view viewWithTag:REQUESTVIEW]){
-//                    [_requestView removeFromSuperview];
-//                }
-//                if ([self.view viewWithTag:TIMINGVIEW]) {
-//                    return;
-//                }
-//                [_receive addSubview:_timingView];
-//
-//            }
-//            else{
-//                if ([self.view viewWithTag:TIMINGVIEW]){
-//                    [_timingView removeFromSuperview];
-//                }
-//                if ([self.view viewWithTag:REQUESTVIEW]) {
-//                    return;
-//                }
-//                [_receive addSubview:_requestView];
-//
-//            }
-//            
-//        }
         //收款界面
         if ([self.view viewWithTag:PAYMENTVIEWTAG]){
             [_paymentView removeFromSuperview];
@@ -531,7 +348,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-//    _iTable.hidden = isShowTable;
     [[AppDelegate App] showTabBar];
     [[AppDelegate App] hidenNavigation:self.navigationController];
     [self showViewByISPayment:[NetWorkEngine shareInstance].isPayment];
@@ -539,7 +355,6 @@
 - (void)updateUI:(NSDictionary*)iDic
 {
     _iDataForResponstor = iDic;
-//    isShowWaitView = YES;
     if (!_receiveCollectionVC) {
         _receiveCollectionVC = [[SJCollectionVC alloc]init];
         [_receive addSubview:_receiveCollectionVC.view];
@@ -549,13 +364,8 @@
         [iDic count]>0 &&
         [iDic objectForKey:@"service_time"] &&
         ![[iDic objectForKey:@"service_time"]isKindOfClass:[NSNull class]]) {
-//        _serviceTime = [iDic objectForKey:@"service_time"];
-//        _requesterStr = [NSString stringWithFormat:@"%@/%@",[iDic objectForKey:@"requester"],[iDic objectForKey:@"email"]];
-//        [self updateViewUI];
-//        isShowWaitView = NO;
         [AppDelegate App].kUIflag = kCOLLECTIONUI_II;
         [_receiveCollectionVC setDataSource:iDic];
-        
     }
     else{
         [AppDelegate App].kUIflag = kCOLLECTIONUI_I;
@@ -652,7 +462,6 @@
 
 
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             cell.userInteractionEnabled = YES;
             break;
         case 1:
@@ -660,12 +469,7 @@
             cell.userInteractionEnabled = NO;
             break;
     }
-    
-    
-    //    cell.textLabel.text = ((Chapter *)[self.iDataArray objectAtIndex:[indexPath row]]).title;
     cell.textLabel.backgroundColor = [UIColor clearColor];
-    
-    //    cell.selectionStyle = UITableViewCellEditingStyleNone;
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
