@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SJReservationVC.h"
 #import "SVSegmentedControl.h"
-
+#import "SJCollectionVC.h"
 @interface SJReservationVCViewController : UIViewController<UITextFieldDelegate,UITableViewDataSource, UITableViewDelegate>
 {
     UITableView *_iTable;//分类浏览
@@ -24,7 +24,6 @@
     BOOL isShowWaitView;//是否显示等待界面，yes显示等待界面
     UIView *_requestView;//收款请求界面
     UIView *_waitView;//收款等待界面
-    UIView *_timingView;//计时界面
     
     NSString *_serviceTime;//预约服务时间
     NSString *_requesterStr;//付款名+email
@@ -38,6 +37,8 @@
     UILabel *_timingLabel;//计时显示
     
     UIButton    *_btnBackGround;
+    
+    SJCollectionVC *_receiveCollectionVC;
 }
 @property (nonatomic) BOOL isShowTable;
 - (void)segmentedControlChangedValue:(SVSegmentedControl*)segmentedControl;

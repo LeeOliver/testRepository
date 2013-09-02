@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "CircularProgressView.h"
 @interface SJReservationVC : UIViewController<UITextFieldDelegate>
 {
+    UIButton        *_backBtn;//返回按钮
+    
     UIView          *_mainView;
     NSDictionary    *_dataDic;
     NSString        *_fund;
@@ -29,6 +31,12 @@
     double          _kCountFund;//金额
     
     UIButton    *_btnBackGround;
+    
+    int             _selectM;//选测预约分钟
+    
+    CircularProgressView *_progressCircularView;
+    UIButton        *_startOrEndBtn;//开始结束按钮
+    NSString        *_recordTime;//记录计时时间
 }
 @property (nonatomic, strong) NSDictionary *dataDic;
 @end

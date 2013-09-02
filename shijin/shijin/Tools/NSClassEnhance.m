@@ -86,3 +86,15 @@
     return tmpLabel;
 }
 @end
+@implementation NSString (Enhance)
+//format audio time
++ (NSString *)formatTime:(int)num
+{
+    int sec = num % 60;
+    int min = num / 60;
+    if (num < 60) {
+        return [NSString stringWithFormat:@"00:%02d:00",num];
+    }
+    return [NSString stringWithFormat:@"%02d:%02d:00",min,sec];
+}
+@end

@@ -33,3 +33,7 @@
 @interface UILabel (Enhance)
 - (UILabel *)mutableDeepCopy;
 @end
+@interface NSString (Enhance)
+//format audio time
++ (NSString *)formatTime:(int)num;
+@end

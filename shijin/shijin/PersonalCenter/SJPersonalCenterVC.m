@@ -25,20 +25,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-    
-    // Configure for text only and offset down
-    hud.mode = MBProgressHUDModeIndeterminate;
-    hud.labelText = @"正在加载...";
-    hud.detailsLabelText = @"请稍等";
-    hud.progress = 0.6f;
-    hud.margin = 15.f;
-    hud.color = [UIColor redColor];
-//    hud.yOffset = 150.f;
-//    hud.removeFromSuperViewOnHide = YES;
-    
-    [hud hide:YES afterDelay:7];
-    [[AppDelegate App].window addSubview:hud];
+//    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+//    
+//    // Configure for text only and offset down
+//    hud.mode = MBProgressHUDModeIndeterminate;
+//    hud.labelText = @"正在加载...";
+//    hud.detailsLabelText = @"请稍等";
+//    hud.progress = 0.6f;
+//    hud.margin = 15.f;
+////    hud.yOffset = 150.f;
+////    hud.removeFromSuperViewOnHide = YES;
+//    
+//    [hud hide:YES afterDelay:7];
+//    [[AppDelegate App].window addSubview:hud];
 
     [self initSelfFirst];
     [[AppDelegate App] hidenNavigation:self.navigationController];
@@ -67,11 +66,11 @@
 //    UILabel *titleLebel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 200, 20)];
 //    titleLebel.text = @"个人中心"
     
-    UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [backBtn setBackgroundImage:[UIImage imageNamed:@"center_back.png"] forState:UIControlStateNormal];
-    backBtn.frame = CGRectMake(0, 0, 44, 32);
-    backBtn.center = CGPointMake(MAINSCREENWIDTH-45, 25);
-    [topView addSubview:backBtn];
+//    UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [backBtn setBackgroundImage:[UIImage imageNamed:@"center_back.png"] forState:UIControlStateNormal];
+//    backBtn.frame = CGRectMake(0, 0, 44, 32);
+//    backBtn.center = CGPointMake(MAINSCREENWIDTH-45, 25);
+//    [topView addSubview:backBtn];
     
     
     [self initTable];
