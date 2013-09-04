@@ -16,7 +16,7 @@
 @end
 
 @implementation SJCollectionVC
-
+@synthesize topCopyView = _topCopyView;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -146,8 +146,6 @@
     searchBtn.frame = CGRectMake(67, MAINSCREENHEIGHT-50-30-20-15, 186, 30);
     searchBtn.center = CGPointMake(MAINSCREENWIDTH/2, 345);
     [_iUIViewII addSubview:searchBtn];
-    
-    
 }
 - (void)initViewThree
 {
@@ -187,7 +185,6 @@
     logoView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"reservation_logo_rbg.png"]];
     logoView.center = CGPointMake(MAINSCREENWIDTH/2, 420);
     [_iUIViewIII addSubview:logoView];
-    
 }
 - (void)initViewFour
 {
@@ -217,7 +214,7 @@
     [mainbox addSubview:view3];
     
     _servertimeViewIV = [[UILabel alloc]initWithFrame:CGRectMake(50, 10, 270, 25)];
-//    title3.text = [NSString stringWithFormat:@"费率:$%@/每分钟",[_dataDic objectForKey:@"com_rate"]];
+    _servertimeViewIV.text = [NSString stringWithFormat:@"总计时%d秒",[_recordTime intValue]];
     _servertimeViewIV.textAlignment = NSTextAlignmentLeft;
     _servertimeViewIV.textColor = [UIColor colorWithRed:14/255.0f green:68/255.0f blue:82/255.0f alpha:1.0f];
     _servertimeViewIV.backgroundColor = [UIColor clearColor];
@@ -229,7 +226,7 @@
     [mainbox addSubview:view4];
             
     _incomeViewIV = [[UILabel alloc]initWithFrame:CGRectMake(50, 55, 270, 25)];
-    _incomeViewIV.text = [NSString stringWithFormat:@"总计时%d秒",[_recordTime intValue]];
+    _incomeViewIV.text = [NSString stringWithFormat:@"您共花费0.00"];
     _incomeViewIV.textAlignment = NSTextAlignmentLeft;
     _incomeViewIV.textColor = [UIColor colorWithRed:14/255.0f green:68/255.0f blue:82/255.0f alpha:1.0f];
     _incomeViewIV.backgroundColor = [UIColor clearColor];
@@ -241,7 +238,8 @@
     [mainbox addSubview:view6];
     
     _fundViewIV = [[UILabel alloc]initWithFrame:CGRectMake(50, 99, 280, 25)];
-    _fundViewIV.text = [NSString stringWithFormat:@"您共花费"];
+    _fundViewIV.text = [NSString stringWithFormat:@"预约时间:%@分钟",[_iData objectForKey:@"service_time"]];
+    
     _fundViewIV.textAlignment = NSTextAlignmentLeft;
     _fundViewIV.textColor = [UIColor colorWithRed:14/255.0f green:68/255.0f blue:82/255.0f alpha:1.0f];
     _fundViewIV.backgroundColor = [UIColor clearColor];
@@ -255,26 +253,33 @@
         case kCOLLECTIONUI_I:
         {
             [self showUIOne];
+            [self hideBackButton];
         }
             break;
         case kCOLLECTIONUI_II:
         {
             [self showUITwo];
+            [self addBackButton];
+            [self changeButtonAction:@selector(backAction) andNewAction:@selector(stopAction) andButton:[_topCopyView viewWithTag:10021]];
         }
             break;
         case kCOLLECTIONUI_III:
         {
             [self showUIThree];
+            [self hideBackButton];
         }
             break;
         case kCOLLECTIONUI_IV:
         {
             [self showUIFour];
+            [self addBackButton];
+            [self changeButtonAction:@selector(stopAction) andNewAction:@selector(backAction) andButton:[_topCopyView viewWithTag:10021]];
         }
             break;
             
         default:
             [self showUIOne];
+            [self hideBackButton];
             break;
     }
 }
@@ -390,6 +395,7 @@
         [self updateViewUI];
         [self setTopService:[NSString stringWithFormat:@"服务器状态:接受"]];
         [[SJTimeEngine shareInstance]loopTimerByTime:@"3" delegate:self sel:@selector(getReicpient)];
+        [self changeButtonAction:@selector(backAction) andNewAction:@selector(stopAction) andButton:[_topCopyView viewWithTag:10021]];
     }
 }
 
@@ -397,23 +403,31 @@
 {
     [[NetWorkEngine shareInstance]getReicpientByResponserId:[NetWorkEngine shareInstance].userID andRequesterId:[_iData objectForKey:@"requester_id"] andFund:[_iData objectForKey:@"rate"] andShowTime:[_iData objectForKey:@"service_time"] delegate:self sel:@selector(getReicpientReturn:)];
     
+    
 }
 - (void)getReicpientReturn:(NSDictionary *)iData
 {
 //    _timingTimeStr.text = [NSString stringWithFormat:@"服务商:%@", _requesterStr];
     if (![[iData objectForKey:@"start"] isKindOfClass:[NSNull class]] && [[iData objectForKey:@"start"]isEqualToString:@"Y"]) {
         [self setTopService:[NSString stringWithFormat:@"服务器状态:正在服务中"]];
-
+        [self hideBackButton];
         [_progressCircularView play];
     }
-    else if((![[iData objectForKey:@"start"] isKindOfClass:[NSNull class]] && [[iData objectForKey:@"start"]isEqualToString:@"S"]) ||
-            [[iData objectForKey:@"start"] isKindOfClass:[NSNull class]])
+    else if((![[iData objectForKey:@"start"] isKindOfClass:[NSNull class]] &&
+             [[iData objectForKey:@"start"]isEqualToString:@"S"]) ||
+                    [[iData objectForKey:@"start"] isKindOfClass:[NSNull class]])
     {
+        [self addBackButton];
+        [self changeButtonAction:@selector(stopAction) andNewAction:@selector(backAction) andButton:[_topCopyView viewWithTag:10021]];
+
         [self setTopService:[NSString stringWithFormat:@"服务器状态:服务终止"]];
         [_progressCircularView revert];
         [[SJTimeEngine shareInstance]stopTimer];
         [AppDelegate App].kUIflag = kCOLLECTIONUI_IV;
         [self updateViewUI];
+        if ([[iData objectForKey:@"start"] isKindOfClass:[NSNull class]]) {
+            return;
+        }
         [self setViewIVLabel:[iData mutableDeepCopy]];
     }
 }
@@ -421,7 +435,6 @@
 {
     _servertimeViewIV.text = [NSString stringWithFormat:@"总计时:%@分",[dicData objectForKey:@"responser_time"]];
     _incomeViewIV.text = [NSString stringWithFormat:@"您收入金额:%@",[dicData objectForKey:@"responser_fund"]];
-    _fundViewIV.text = [NSString stringWithFormat:@"预约时间:%@分钟",[_iData objectForKey:@"service_time"]];
 }
 #pragma mark Circular Progress View Delegate method
 - (void)didUpdateProgressView:(NSString *)iCurrentTime{
@@ -434,6 +447,62 @@
     HUD.yOffset = 150.0f;
     [HUD hide:YES afterDelay:1.5];
     _recordTime = iCurrentTime;
+}
+- (void)addBackButton
+{
+    //查找类别返回按钮
+    if ([_topCopyView viewWithTag:10021]) {
+        UIButton *backBtnTemp = (UIButton*)[_topCopyView viewWithTag:10021];
+        backBtnTemp.hidden = NO;
+        return;
+    }
+    UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [backBtn setBackgroundImage:[UIImage imageNamed:@"backbtn.png"] forState:UIControlStateNormal];
+    backBtn.tag = 10021;
+    backBtn.hidden = NO;
+    [backBtn addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
+    backBtn.frame = CGRectMake(9, 7, 40, 30);
+    backBtn.center = CGPointMake(MAINSCREENWIDTH-45, 25);
+    [_topCopyView addSubview:backBtn];
+}
+- (void)hideBackButton
+{
+    if ([_topCopyView viewWithTag:10021]) {
+        UIButton *backBtnTemp = (UIButton*)[_topCopyView viewWithTag:10021];
+        backBtnTemp.hidden = YES;
+        [backBtnTemp removeFromSuperview];
+    }
+}
+- (void)changeButtonAction:(SEL)oldAction andNewAction:(SEL)newAction andButton:(id)sender
+{
+    UIButton *btn = (UIButton *)sender;
+    if (!btn || [btn isKindOfClass:[NSNull class]]) {
+        return;
+    }
+    [btn removeTarget:self action:oldAction forControlEvents:UIControlEventTouchUpInside];
+    [btn addTarget:self action:newAction forControlEvents:UIControlEventTouchUpInside];
+}
+- (void)backAction
+{
+    [[SJTimeEngine shareInstance]stopTimer];
+    [AppDelegate App].kUIflag = kCOLLECTIONUI_I;
+    [self setDataSource:nil];
+}
+- (void)stopAction
+{
+    [self stopRequest];
+}
+- (void)stopRequest
+{
+    [[SJTimeEngine shareInstance]stopTimer];
+    [[NetWorkEngine shareInstance]stopRequestByResponserId:[_iData objectForKey:@"id"] andRequesterId:[NetWorkEngine shareInstance].userID delegate:self sel:@selector(stopRequestReturn:)];
+}
+- (void)stopRequestReturn:(NSDictionary *)iDataArr
+{
+    if ([[iDataArr objectForKey:@"SUCCESS"]isEqualToString:@"SUCCESS"]) {
+        [AppDelegate App].kUIflag = kCOLLECTIONUI_I;
+        [self updateViewUI];
+    }
 }
 
 @end

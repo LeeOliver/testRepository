@@ -39,6 +39,7 @@
     UIButton    *_btnBackGround;
     
     SJCollectionVC *_receiveCollectionVC;
+    UIView *_topView;
 }
 @property (nonatomic) BOOL isShowTable;
 

@@ -7,6 +7,7 @@
 //
 
 #import "SJPersonalCenterVC.h"
+#import "LEffectLabel.h"
 @interface SJPersonalCenterVC ()
 
 @end
@@ -43,22 +44,31 @@
     //顶部navi
     UIView *topView = [[AppDelegate App] creatNavigationView];
     [self.view addSubview:topView];
+#if 0
+    //测试字体特效
+    LEffectLabel *effectLabel = [[LEffectLabel alloc] initWithFrame:CGRectMake(0, 0, 300, 160)];
+    [self.view addSubview:effectLabel];
+    effectLabel.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     
-//    UIButton *titleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [titleBtn setBackgroundImage:[UIImage imageNamed:@" center_title.png"] forState:UIControlStateNormal];
-//    titleBtn.frame = CGRectMake(0, 0, 82, 32);
-//    titleBtn.center = CGPointMake(MAINSCREENWIDTH/2, 25);
-//    [topView addSubview:titleBtn];
+    effectLabel.font = [UIFont boldSystemFontOfSize:28];
+    effectLabel.text = @"test 测试字体";
     
-//    UILabel *titleLebel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 200, 20)];
-//    titleLebel.text = @"个人中心"
+    effectLabel.textColor = [UIColor whiteColor];
+    effectLabel.effectColor = [UIColor blueColor];
+    effectLabel.effectDirection = EffectDirectionLeftToRight;
     
-//    UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [backBtn setBackgroundImage:[UIImage imageNamed:@"center_back.png"] forState:UIControlStateNormal];
-//    backBtn.frame = CGRectMake(0, 0, 44, 32);
-//    backBtn.center = CGPointMake(MAINSCREENWIDTH-45, 25);
-//    [topView addSubview:backBtn];
+    effectLabel.center = CGPointMake(160, 400);
     
+    for (int i = 0; i < 8; i++)
+    {
+        int64_t delayInSeconds = 3 * i;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+//            effectLabel.effectDirection = i;
+            [effectLabel performEffectAnimation];
+        });
+    }
+#endif
     
     [self initTable];
 }

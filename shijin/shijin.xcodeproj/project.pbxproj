@@ -197,6 +197,7 @@
 		18FA0B6F17A7AB14001B5AB5 /* SJReservationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FA0B6E17A7AB14001B5AB5 /* SJReservationVC.m */; };
 		18FA0B7217A7B76B001B5AB5 /* SJRegisteredVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FA0B7117A7B76B001B5AB5 /* SJRegisteredVC.m */; };
 		18FD283017CAEB8F0026F340 /* SJGuideVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FD282F17CAEB8F0026F340 /* SJGuideVC.m */; };
+		18FDFF6617D6C8EA0004C29C /* LEffectLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FDFF6517D6C8EA0004C29C /* LEffectLabel.m */; };
 		18FE74EF17A0B7C500F0B3B5 /* SJPersonalCenterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FE74EC17A0B7C500F0B3B5 /* SJPersonalCenterVC.m */; };
 		18FE74F017A0B7C500F0B3B5 /* SJSigninVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FE74EE17A0B7C500F0B3B5 /* SJSigninVC.m */; };
 		18FE74F817A0B83000F0B3B5 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FE74F717A0B83000F0B3B5 /* Reachability.m */; };
@@ -444,6 +445,8 @@
 		18FA0B7117A7B76B001B5AB5 /* SJRegisteredVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SJRegisteredVC.m; path = PersonalCenter/SJRegisteredVC.m; sourceTree = "<group>"; };
 		18FD282E17CAEB8F0026F340 /* SJGuideVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJGuideVC.h; sourceTree = "<group>"; };
 		18FD282F17CAEB8F0026F340 /* SJGuideVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJGuideVC.m; sourceTree = "<group>"; };
+		18FDFF6417D6C8EA0004C29C /* LEffectLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LEffectLabel.h; path = ThirdPart/LEffectLabel.h; sourceTree = "<group>"; };
+		18FDFF6517D6C8EA0004C29C /* LEffectLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LEffectLabel.m; path = ThirdPart/LEffectLabel.m; sourceTree = "<group>"; };
 		18FE74EB17A0B7C500F0B3B5 /* SJPersonalCenterVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SJPersonalCenterVC.h; path = PersonalCenter/SJPersonalCenterVC.h; sourceTree = "<group>"; };
 		18FE74EC17A0B7C500F0B3B5 /* SJPersonalCenterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SJPersonalCenterVC.m; path = PersonalCenter/SJPersonalCenterVC.m; sourceTree = "<group>"; };
 		18FE74ED17A0B7C500F0B3B5 /* SJSigninVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SJSigninVC.h; path = PersonalCenter/SJSigninVC.h; sourceTree = "<group>"; };
@@ -845,6 +848,8 @@
 		18FE74F417A0B7E600F0B3B5 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				18FDFF6417D6C8EA0004C29C /* LEffectLabel.h */,
+				18FDFF6517D6C8EA0004C29C /* LEffectLabel.m */,
 				18E4880517D0785C002A1CFD /* CircularProgressView.h */,
 				18E4880617D0785C002A1CFD /* CircularProgressView.m */,
 				18FF42A617CC33A7000F9AFB /* MBProgressHUD.h */,
@@ -1292,6 +1297,7 @@
 				18FD283017CAEB8F0026F340 /* SJGuideVC.m in Sources */,
 				18FF42A817CC33A7000F9AFB /* MBProgressHUD.m in Sources */,
 				18E4880717D0785C002A1CFD /* CircularProgressView.m in Sources */,
+				18FDFF6617D6C8EA0004C29C /* LEffectLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

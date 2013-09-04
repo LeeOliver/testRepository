@@ -728,6 +728,8 @@
 {
     if ([[iDataArr objectForKey:@"flag"]isEqualToString:@"Y"]) {
         [_progressCircularView play];
+        [[SJTimeEngine shareInstance]loopTimerByTime:@"60" delegate:self sel:@selector(meeting)];
+
         [_startOrEndBtn setBackgroundImage:[UIImage imageNamed:@"reservation_end_request.png"] forState:UIControlStateNormal];
         
         [_startOrEndBtn removeTarget:self action:@selector(meetingStart) forControlEvents:UIControlEventTouchUpInside];

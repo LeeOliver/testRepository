@@ -10,6 +10,7 @@
 #import "CircularProgressView.h"
 @interface SJCollectionVC : UIViewController
 {
+    UIView          *_topCopyView;
     UIView          *_mainView;
     UILabel         *_allTime;
     UILabel         *_userFund;
@@ -34,6 +35,7 @@
     UILabel         *_fundViewIV;
 
 }
+@property (nonatomic,strong)     UIView          *topCopyView;
 - (void)setDataSource:(NSDictionary *)aDataSource;
 - (void)updateViewUI;
 @end

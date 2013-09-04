@@ -41,7 +41,7 @@
     [self initReceive];
     [self showViewByISPayment:[NetWorkEngine shareInstance].isPayment];
 
-    UIView *topView = [[AppDelegate App] creatNavigationView];
+    _topView = [[AppDelegate App] creatNavigationView];
     SVSegmentedControl *navSC = [[SVSegmentedControl alloc] initWithSectionTitles:[NSArray arrayWithObjects:@"付款", @"收款", nil]];
     navSC.selectedIndex = [NetWorkEngine shareInstance].isPayment?0:1;
     navSC.changeHandler = ^(NSUInteger newIndex) {
@@ -59,7 +59,7 @@
         [self showViewByISPayment:[NetWorkEngine shareInstance].isPayment];
     };
     
-	[topView addSubview:navSC];
+	[_topView addSubview:navSC];
     navSC.textShadowOffset = CGSizeMake(0, 0);
     navSC.textColor = [UIColor whiteColor];
 	navSC.backgroundImage = [UIImage imageNamed:@"segmented.png"];
@@ -67,7 +67,7 @@
     navSC.thumb.textShadowOffset = CGSizeMake(0, 0);
 	navSC.center = CGPointMake(160, 25);
     
-    [self.view addSubview:topView];
+    [self.view addSubview:_topView];
     //查找类别返回按钮
     UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [backBtn setBackgroundImage:[UIImage imageNamed:@"backbtn.png"] forState:UIControlStateNormal];
@@ -75,7 +75,7 @@
     [backBtn addTarget:self action:@selector(backScrollView) forControlEvents:UIControlEventTouchUpInside];
     backBtn.frame = CGRectMake(9, 7, 40, 30);
     backBtn.center = CGPointMake(MAINSCREENWIDTH-45, 25);
-    [topView addSubview:backBtn];
+    [_topView addSubview:backBtn];
     backBtn.hidden = !isShowTable;
 	// Do any additional setup after loading the view.
     
@@ -368,6 +368,7 @@
     _iDataForResponstor = iDic;
     if (!_receiveCollectionVC) {
         _receiveCollectionVC = [[SJCollectionVC alloc]init];
+        _receiveCollectionVC.topCopyView = _topView;
         [_receive addSubview:_receiveCollectionVC.view];
     }
     if (iDic &&
