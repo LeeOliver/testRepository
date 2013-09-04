@@ -27,13 +27,21 @@
 }
 - (void)setDataSource:(NSDictionary *)aDataSource
 {
-    _iData = aDataSource;
-    _topNameLabel.text = [NSString stringWithFormat:@"%@/%@",[_iData objectForKey:@"requester"],[_iData objectForKey:@"email"]];
-    _topServiceLabel.text = [NSString stringWithFormat:@"费率:%@/分钟",[_iData objectForKey:@"rate"]];
-//    _userFund.text = [NSString stringWithFormat:@"账户当前余额:$%@",_fund];
-//    _allTime.text = [NSString stringWithFormat:@"当前可购买的服务时间:%.2f分钟",([_fund doubleValue]/[[_iData objectForKey:@"com_rate"]doubleValue])];
-
+    if (!aDataSource) {
+        _topNameLabel.text = [NSString stringWithFormat:@"等待客户"];
+        _topFundLabel.text = [NSString stringWithFormat:@"暂无请求"];
+        _topServiceLabel.text = [NSString stringWithFormat:@"服务器状态:等待请求"];
+    }
+    else{
+        _iData = aDataSource;
+        _topNameLabel.text = [NSString stringWithFormat:@"%@/%@",[_iData objectForKey:@"requester"],[_iData objectForKey:@"email"]];
+        _topFundLabel.text = [NSString stringWithFormat:@"费率:%@/分钟\t预约时间:%@分钟",[_iData objectForKey:@"rate"],[_iData objectForKey:@"service_time"]];
+    }
     [self updateViewUI];
+}
+- (void)setTopService:(NSString *)aString
+{
+    _topServiceLabel.text = aString;
 }
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -54,7 +62,7 @@
     [topView addSubview:imageView];
     [_mainView addSubview:topView];
     
-    _topNameLabel = [[UILabel alloc]initWithFrame:CGRectMake(100, 25, 210, 25)];
+    _topNameLabel = [[UILabel alloc]initWithFrame:CGRectMake(100, 20, 210, 25)];
     _topNameLabel.text = [NSString stringWithFormat:@"等待客户"];
     _topNameLabel.textAlignment = NSTextAlignmentLeft;
     _topNameLabel.textColor = [UIColor whiteColor];
@@ -62,8 +70,16 @@
     _topNameLabel.font = [UIFont systemFontOfSize:12.0f];
     [topView addSubview:_topNameLabel];
     
-    _topServiceLabel = [[UILabel alloc]initWithFrame:CGRectMake(100, 60, 210, 25)];
-    _topServiceLabel.text = [NSString stringWithFormat:@"暂无请求"];
+    _topFundLabel = [[UILabel alloc]initWithFrame:CGRectMake(100, 45, 210, 25)];
+    _topFundLabel.text = [NSString stringWithFormat:@"暂无请求"];
+    _topFundLabel.textAlignment = NSTextAlignmentLeft;
+    _topFundLabel.textColor = [UIColor whiteColor];
+    _topFundLabel.backgroundColor = [UIColor clearColor];
+    _topFundLabel.font = [UIFont systemFontOfSize:12.0f];
+    [topView addSubview:_topFundLabel];
+
+    _topServiceLabel = [[UILabel alloc]initWithFrame:CGRectMake(100, 70, 210, 25)];
+    _topServiceLabel.text = [NSString stringWithFormat:@"服务器状态:等待请求"];
     _topServiceLabel.textAlignment = NSTextAlignmentLeft;
     _topServiceLabel.textColor = [UIColor whiteColor];
     _topServiceLabel.backgroundColor = [UIColor clearColor];
@@ -92,26 +108,19 @@
     _iUIViewI.backgroundColor = [UIColor clearColor];
     _iUIViewI.tag = KVIEWSHOWONE;
     
-    
-    UIImageView *boxImg = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"reservation_big_box.png"]];
-    boxImg.frame = CGRectMake(0, 0, 287, 261);
-    boxImg.center = CGPointMake(MAINSCREENWIDTH / 2, 285);
-    [_iUIViewI addSubview:boxImg];
-    
-    UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 100, 30)];
-    title.text = @"等待客户";
-    title.center = CGPointMake(boxImg.frame.size.width/2, 15);
-    title.backgroundColor = [UIColor clearColor];
-    title.textColor = [UIColor whiteColor];
-    title.textAlignment = NSTextAlignmentCenter;
-    [boxImg addSubview:title];
-    
+        
     UIImageView *waitImg = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"reservation_wait.png"]];
     waitImg.frame = CGRectMake(0, 0, 153, 100);
-    waitImg.center = CGPointMake(boxImg.frame.size.width/2, boxImg.frame.size.height/5*3);
-    [boxImg addSubview:waitImg];
+    waitImg.center = CGPointMake(MAINSCREENWIDTH/2, MAINSCREENHEIGHT/5*2);
+    [_iUIViewI addSubview:waitImg];
 
-    
+    UIButton *searchBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [searchBtn setBackgroundImage:[UIImage imageNamed:@"reservation_update_request.png"] forState:UIControlStateNormal];
+    [searchBtn addTarget:self action:@selector(updateAction) forControlEvents:UIControlEventTouchUpInside];
+    searchBtn.frame = CGRectMake(67, MAINSCREENHEIGHT-50-30-20-15, 186, 30);
+    searchBtn.center = CGPointMake(MAINSCREENWIDTH/2, 345);
+    [_iUIViewI addSubview:searchBtn];
+
 
 }
 //请求界面
@@ -125,6 +134,11 @@
     _iUIViewII = [[UIView alloc]initWithFrame:_iUIViewI.frame];
     _iUIViewII.backgroundColor = [UIColor clearColor];
     _iUIViewII.tag = KVIEWSHOWTWO;
+    
+    UIView *imageView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 145, 110)];
+    imageView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"reservation_receive_request.png"]];
+    imageView.center = CGPointMake(MAINSCREENWIDTH / 2, 200);
+    [_iUIViewII addSubview:imageView];
     
     UIButton *searchBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [searchBtn setBackgroundImage:[UIImage imageNamed:@"reservation_end.png"] forState:UIControlStateNormal];
@@ -199,46 +213,40 @@
     }
     
     UIView *view3 = [[UIView alloc]initWithFrame:CGRectMake(13, 10, 26, 26)];
-    view3.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"reservation_rate.png"]];
+    view3.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"reservation_ appointment_time.png"]];
     [mainbox addSubview:view3];
     
-    UILabel *title3 = [[UILabel alloc]initWithFrame:CGRectMake(50, 10, 270, 25)];
+    _servertimeViewIV = [[UILabel alloc]initWithFrame:CGRectMake(50, 10, 270, 25)];
 //    title3.text = [NSString stringWithFormat:@"费率:$%@/每分钟",[_dataDic objectForKey:@"com_rate"]];
-    title3.textAlignment = NSTextAlignmentLeft;
-    title3.textColor = [UIColor colorWithRed:14/255.0f green:68/255.0f blue:82/255.0f alpha:1.0f];
-    title3.backgroundColor = [UIColor clearColor];
-    title3.font = [UIFont systemFontOfSize:12.0f];
-    [mainbox addSubview:title3];
+    _servertimeViewIV.textAlignment = NSTextAlignmentLeft;
+    _servertimeViewIV.textColor = [UIColor colorWithRed:14/255.0f green:68/255.0f blue:82/255.0f alpha:1.0f];
+    _servertimeViewIV.backgroundColor = [UIColor clearColor];
+    _servertimeViewIV.font = [UIFont systemFontOfSize:12.0f];
+    [mainbox addSubview:_servertimeViewIV];
     
     UIView *view4 = [[UIView alloc]initWithFrame:CGRectMake(13, 55, 26, 26)];
-    view4.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"reservation_buy_time.png"]];
+    view4.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"reservation_rate.png"]];
     [mainbox addSubview:view4];
+            
+    _incomeViewIV = [[UILabel alloc]initWithFrame:CGRectMake(50, 55, 270, 25)];
+    _incomeViewIV.text = [NSString stringWithFormat:@"总计时%d秒",[_recordTime intValue]];
+    _incomeViewIV.textAlignment = NSTextAlignmentLeft;
+    _incomeViewIV.textColor = [UIColor colorWithRed:14/255.0f green:68/255.0f blue:82/255.0f alpha:1.0f];
+    _incomeViewIV.backgroundColor = [UIColor clearColor];
+    _incomeViewIV.font = [UIFont systemFontOfSize:12.0f];
+    [mainbox addSubview:_incomeViewIV];
     
-    [mainbox addSubview:[_allTime mutableDeepCopy]];
-    
-    UIView *view5 = [[UIView alloc]initWithFrame:CGRectMake(13, 99, 26, 26)];
-    view5.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"reservation_ appointment_time.png"]];
-    [mainbox addSubview:view5];
-    
-    UILabel *title5 = [[UILabel alloc]initWithFrame:CGRectMake(50, 99, 270, 25)];
-    title5.text = [NSString stringWithFormat:@"总计时%d秒",[_recordTime intValue]];
-    title5.textAlignment = NSTextAlignmentLeft;
-    title5.textColor = [UIColor colorWithRed:14/255.0f green:68/255.0f blue:82/255.0f alpha:1.0f];
-    title5.backgroundColor = [UIColor clearColor];
-    title5.font = [UIFont systemFontOfSize:12.0f];
-    [mainbox addSubview:title5];
-    
-    UIView *view6 = [[UIView alloc]initWithFrame:CGRectMake(13, 145, 26, 26)];
+    UIView *view6 = [[UIView alloc]initWithFrame:CGRectMake(13, 99, 26, 26)];
     view6.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"reservation_account_balance.png"]];
     [mainbox addSubview:view6];
     
-    UILabel *title6 = [[UILabel alloc]initWithFrame:CGRectMake(50, 145, 280, 25)];
-//    title6.text = [NSString stringWithFormat:@"您共花费%.2f",[_recordTime intValue]/60*[[_dataDic objectForKey:@"com_rate"]floatValue]];
-    title6.textAlignment = NSTextAlignmentLeft;
-    title6.textColor = [UIColor colorWithRed:14/255.0f green:68/255.0f blue:82/255.0f alpha:1.0f];
-    title6.backgroundColor = [UIColor clearColor];
-    title6.font = [UIFont systemFontOfSize:12.0f];
-    [mainbox addSubview:title6];
+    _fundViewIV = [[UILabel alloc]initWithFrame:CGRectMake(50, 99, 280, 25)];
+    _fundViewIV.text = [NSString stringWithFormat:@"您共花费"];
+    _fundViewIV.textAlignment = NSTextAlignmentLeft;
+    _fundViewIV.textColor = [UIColor colorWithRed:14/255.0f green:68/255.0f blue:82/255.0f alpha:1.0f];
+    _fundViewIV.backgroundColor = [UIColor clearColor];
+    _fundViewIV.font = [UIFont systemFontOfSize:12.0f];
+    [mainbox addSubview:_fundViewIV];
 }
 
 - (void)updateViewUI
@@ -343,6 +351,31 @@
     [self.view addSubview:_iUIViewIV];
 
 }
+- (void)updateAction
+{
+    [[NetWorkEngine shareInstance]getRequestInfoByResponserId:[NetWorkEngine shareInstance].userID delegate:self sel:@selector(updateUI:)];
+    MBProgressHUD *HUD = [MBProgressHUD showHUDAddedTo:self.view
+                                              animated:YES];
+    HUD.labelText = @"正在加載";
+}
+- (void)updateUI:(NSDictionary*)iDic
+{
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    if (iDic &&
+        ![iDic isKindOfClass:[NSNull class]] &&
+        [iDic count]>0 &&
+        [iDic objectForKey:@"service_time"] &&
+        ![[iDic objectForKey:@"service_time"]isKindOfClass:[NSNull class]]) {
+        [AppDelegate App].kUIflag = kCOLLECTIONUI_II;
+        [self setDataSource:iDic];
+        [self setTopService:[NSString stringWithFormat:@"服务器状态:请求"]];
+    }
+    else{
+        [AppDelegate App].kUIflag = kCOLLECTIONUI_I;
+        [self setDataSource:nil];
+    }
+
+}
 
 - (void)acceptAction
 {
@@ -355,6 +388,7 @@
     if (iData && [iData objectForKey:@"flag"]) {
         [AppDelegate App].kUIflag = kCOLLECTIONUI_III;
         [self updateViewUI];
+        [self setTopService:[NSString stringWithFormat:@"服务器状态:接受"]];
         [[SJTimeEngine shareInstance]loopTimerByTime:@"3" delegate:self sel:@selector(getReicpient)];
     }
 }
@@ -368,23 +402,31 @@
 {
 //    _timingTimeStr.text = [NSString stringWithFormat:@"服务商:%@", _requesterStr];
     if (![[iData objectForKey:@"start"] isKindOfClass:[NSNull class]] && [[iData objectForKey:@"start"]isEqualToString:@"Y"]) {
-//        _timingTitle.text = @"服务状态 ：开始计时";
-//        _timingLabel.text = [NSString stringWithFormat:@"服务时间:%@分钟",[iData objectForKey:@"responser_time"]];
+        [self setTopService:[NSString stringWithFormat:@"服务器状态:正在服务中"]];
+
         [_progressCircularView play];
     }
     else if((![[iData objectForKey:@"start"] isKindOfClass:[NSNull class]] && [[iData objectForKey:@"start"]isEqualToString:@"S"]) ||
             [[iData objectForKey:@"start"] isKindOfClass:[NSNull class]])
     {
-//        [_progressCircularView revert];
+        [self setTopService:[NSString stringWithFormat:@"服务器状态:服务终止"]];
+        [_progressCircularView revert];
         [[SJTimeEngine shareInstance]stopTimer];
         [AppDelegate App].kUIflag = kCOLLECTIONUI_IV;
         [self updateViewUI];
+        [self setViewIVLabel:[iData mutableDeepCopy]];
     }
+}
+- (void)setViewIVLabel:(NSDictionary *)dicData
+{
+    _servertimeViewIV.text = [NSString stringWithFormat:@"总计时:%@分",[dicData objectForKey:@"responser_time"]];
+    _incomeViewIV.text = [NSString stringWithFormat:@"您收入金额:%@",[dicData objectForKey:@"responser_fund"]];
+    _fundViewIV.text = [NSString stringWithFormat:@"预约时间:%@分钟",[_iData objectForKey:@"service_time"]];
 }
 #pragma mark Circular Progress View Delegate method
 - (void)didUpdateProgressView:(NSString *)iCurrentTime{
     //update timelabel
-    MBProgressHUD *HUD = [MBProgressHUD showHUDAddedTo:self.navigationController.view
+    MBProgressHUD *HUD = [MBProgressHUD showHUDAddedTo:self.view
                                               animated:YES];
     HUD.labelText = [NSString stringWithFormat:@"计时:%@",[NSString formatTime:[iCurrentTime intValue]]];
     HUD.mode = MBProgressHUDModeText;

@@ -41,6 +41,5 @@
     SJCollectionVC *_receiveCollectionVC;
 }
 @property (nonatomic) BOOL isShowTable;
-- (void)segmentedControlChangedValue:(SVSegmentedControl*)segmentedControl;
 
 @end

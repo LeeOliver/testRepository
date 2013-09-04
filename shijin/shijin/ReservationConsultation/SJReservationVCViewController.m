@@ -50,13 +50,17 @@
         }
         else{
             [NetWorkEngine shareInstance].isPayment = NO;
+            MBProgressHUD *HUD = [MBProgressHUD showHUDAddedTo:self.navigationController.view
+                                                      animated:YES];
+            HUD.labelText = @"正在加載";
+
             [[NetWorkEngine shareInstance]getRequestInfoByResponserId:[NetWorkEngine shareInstance].userID delegate:self sel:@selector(updateUI:)];
         }
         [self showViewByISPayment:[NetWorkEngine shareInstance].isPayment];
     };
     
 	[topView addSubview:navSC];
-    navSC.shadowOffset = CGSizeMake(0, 0);
+    navSC.textShadowOffset = CGSizeMake(0, 0);
     navSC.textColor = [UIColor whiteColor];
 	navSC.backgroundImage = [UIImage imageNamed:@"segmented.png"];
     navSC.thumb.tintColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"segmented_selected.png"]];
@@ -347,6 +351,10 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    UIButton *btn = (UIButton*)[self.view viewWithTag:1002];
+    btn.hidden = !isShowTable;
+    
+
     [super viewWillAppear:animated];
     [[AppDelegate App] showTabBar];
     [[AppDelegate App] hidenNavigation:self.navigationController];
@@ -354,6 +362,9 @@
 }
 - (void)updateUI:(NSDictionary*)iDic
 {
+    UIButton *btn = (UIButton*)[self.view viewWithTag:1002];
+    btn.hidden = YES;
+    [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
     _iDataForResponstor = iDic;
     if (!_receiveCollectionVC) {
         _receiveCollectionVC = [[SJCollectionVC alloc]init];
@@ -369,6 +380,7 @@
     }
     else{
         [AppDelegate App].kUIflag = kCOLLECTIONUI_I;
+        [_receiveCollectionVC setDataSource:nil];
     }
     [self showViewByISPayment:[NetWorkEngine shareInstance].isPayment];
 }

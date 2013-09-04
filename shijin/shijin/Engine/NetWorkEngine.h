@@ -62,6 +62,8 @@
                           delegate:(id) aDelegate
                                sel:(SEL) aSel;
 
+#pragma Mark-
+#pragma 预约接口
 /**
  *	@brief	建立临时会话记录 
  *  1
@@ -204,5 +206,44 @@
                          delegate:(id) aDelegate
                               sel:(SEL) aSel;
 
+
+/**
+ *	@brief	添加登陆时间
+ *
+ *	@param 	sUserId 	自己的id
+ */
+- (void)addLastLoginTimeByUserId:(NSString *)sUserId;
+
+/**
+ *	@brief	更新个人资料
+ *
+ *	@param 	sUserId 	自己id
+ *	@param 	sName 	自己昵称
+ *	@param 	sAddress 	地址
+ *	@param 	sPhone 	电话
+ */
+- (void)updateUserInfoByUserId:(NSString *)sUserId
+                   andNikeName:(NSString *)sName
+                    andAddress:(NSString *)sAddress
+                      andPhone:(NSString *)sPhone
+                      delegate:(id) aDelegate
+                           sel:(SEL) aSel;
+
+/**
+ *	@brief	获取某人的余额
+ *
+ *	@param 	sUserId 	查询用户id
+ */
+- (void)getUserFundByUserId:(NSString *)sUserId
+                   delegate:(id) aDelegate
+                        sel:(SEL) aSel;
+/**
+ *	@brief	获取某人的信息
+ *
+ *	@param 	sUserId 	查询用户id
+ */
+- (void)getUserInfoByUserId:(NSString *)sUserId
+                   delegate:(id) aDelegate
+                        sel:(SEL) aSel;
 
 @end

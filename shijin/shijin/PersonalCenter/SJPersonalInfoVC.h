@@ -10,6 +10,7 @@
 
 @interface SJPersonalInfoVC : UIViewController<UITableViewDelegate,UITableViewDataSource>
 {
+    NSDictionary *_iDataSource;
     UITableView *_iTable;
 }
 @end

@@ -618,6 +618,19 @@
 }
 - (void)hideKeyBoard
 {
+    float kSelectCountMinutes = [_minutes.text floatValue] + [_hours.text floatValue] * 60;
+    if (kSelectCountMinutes>([_fund doubleValue]/[[_dataDic objectForKey:@"com_rate"]doubleValue])) {
+        MBProgressHUD *HUD = [MBProgressHUD showHUDAddedTo:self.navigationController.view
+                                                  animated:YES];
+        HUD.labelText = @"您的余额不足";
+        HUD.detailsLabelText = @"请您输入可预约时间";
+        HUD.mode = MBProgressHUDModeText;
+        HUD.margin = 10;
+        HUD.yOffset = 110.0f;
+        [HUD hide:YES afterDelay:3];
+        _minutes.text = @"";
+        _hours.text = @"";
+    }
     _btnBackGround.userInteractionEnabled = NO;
     if ([_minutes isFirstResponder])
     {
@@ -722,7 +735,7 @@
     }
 }
 
-- (void)meeting
+- (void)meeting 
 {
     _kTotalTimeS++;
     if (_kTotalTimeS == 1) {

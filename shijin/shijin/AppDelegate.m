@@ -48,21 +48,33 @@
 
 - (void)autoLogin
 {
-    if ([self testLocalWiFi]) {
-        if ([self isLoginInfo]) {
-            [self mainAction];
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"everLaunched"]) {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"everLaunched"];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"firstLaunch"];
+    }
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"]) {
+        SJGuideVC *mainView = [[SJGuideVC alloc]init];
+        self.window.rootViewController = mainView;
+
+    }
+    else{
+        if ([self testLocalWiFi]) {
+            if ([self isLoginInfo]) {
+                [self mainAction];
+            }
+            else{
+                SJMainLogin *mainView = [[SJMainLogin alloc]init];
+                self.window.rootViewController = mainView;
+            }
+        }else{
+            [self showAlert:@"提醒!" andMessage:@"您没开网，请联网继续!"];
         }
-        else{
-            SJMainLogin *mainView = [[SJMainLogin alloc]init];
-            self.window.rootViewController = mainView;
-        }
-    }else{
-        [self showAlert:@"提醒!" andMessage:@"您没开网，请联网继续!"];
     }
 }
 
 - (void)mainAction
 {
+    [[NetWorkEngine shareInstance]addLastLoginTimeByUserId:[NetWorkEngine shareInstance].personID];
     //预约咨询
     UINavigationController *reservationNavi;
     UITabBarItem *firstItem = [[UITabBarItem alloc] initWithTitle:@"预约咨询"

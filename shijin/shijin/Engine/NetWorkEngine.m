@@ -166,8 +166,13 @@ static NetWorkEngine * sharedNetWorkEngine = NULL;
             if (aDelegate &&
                 [aDelegate respondsToSelector:aSel])
             {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+
                 [aDelegate performSelector:aSel
                                 withObject:usersList];
+#pragma clang diagnostic pop
+
             }
             
         }
@@ -175,8 +180,13 @@ static NetWorkEngine * sharedNetWorkEngine = NULL;
                 if (aDelegate &&
                     [aDelegate respondsToSelector:aSel])
                 {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+
                     [aDelegate performSelector:aSel
                                     withObject:nil];
+#pragma clang diagnostic pop
+
                 }
         }
     };
@@ -187,8 +197,13 @@ static NetWorkEngine * sharedNetWorkEngine = NULL;
         if (aDelegate &&
             [aDelegate respondsToSelector:aSel])
         {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+
             [aDelegate performSelector:aSel
                             withObject:nil];
+#pragma clang diagnostic pop
+
         }
     };
     [[SJNetworkService shareInstance] asynRequestWithMethodName:@"SearchFromEmail"
@@ -223,16 +238,26 @@ static NetWorkEngine * sharedNetWorkEngine = NULL;
             if (aDelegate &&
                 [aDelegate respondsToSelector:aSel])
             {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+
                 [aDelegate performSelector:aSel
                                 withObject:usersList];
+#pragma clang diagnostic pop
+
             }
         }
         else {
             if (aDelegate &&
                 [aDelegate respondsToSelector:aSel])
             {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+
                 [aDelegate performSelector:aSel
                                 withObject:nil];
+#pragma clang diagnostic pop
+
             }
         }
     };
@@ -243,8 +268,13 @@ static NetWorkEngine * sharedNetWorkEngine = NULL;
         if (aDelegate &&
             [aDelegate respondsToSelector:aSel])
         {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+
             [aDelegate performSelector:aSel
                             withObject:nil];
+#pragma clang diagnostic pop
+
         }
     };
     [[SJNetworkService shareInstance] asynRequestWithMethodName:@"SearchExperts"
@@ -290,16 +320,26 @@ static NetWorkEngine * sharedNetWorkEngine = NULL;
             if (aDelegate &&
                 [aDelegate respondsToSelector:aSel])
             {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+
                 [aDelegate performSelector:aSel
                                 withObject:usersList];
+#pragma clang diagnostic pop
+
             }
         }
         else {
             if (aDelegate &&
                 [aDelegate respondsToSelector:aSel])
             {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+
                 [aDelegate performSelector:aSel
                                 withObject:nil];
+#pragma clang diagnostic pop
+
             }
         }
     };
@@ -310,8 +350,13 @@ static NetWorkEngine * sharedNetWorkEngine = NULL;
         if (aDelegate &&
             [aDelegate respondsToSelector:aSel])
         {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+
             [aDelegate performSelector:aSel
                             withObject:nil];
+#pragma clang diagnostic pop
+
         }
     };
     [[SJNetworkService shareInstance] asynRequestWithMethodName:@"CreatTempMeetingRequest"
@@ -346,16 +391,26 @@ static NetWorkEngine * sharedNetWorkEngine = NULL;
             if (aDelegate &&
                 [aDelegate respondsToSelector:aSel])
             {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+
                 [aDelegate performSelector:aSel
                                 withObject:usersList];
+#pragma clang diagnostic pop
+
             }
         }
         else {
             if (aDelegate &&
                 [aDelegate respondsToSelector:aSel])
             {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+
                 [aDelegate performSelector:aSel
                                 withObject:nil];
+#pragma clang diagnostic pop
+
             }
         }
     };
@@ -366,8 +421,13 @@ static NetWorkEngine * sharedNetWorkEngine = NULL;
         if (aDelegate &&
             [aDelegate respondsToSelector:aSel])
         {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+
             [aDelegate performSelector:aSel
                             withObject:nil];
+#pragma clang diagnostic pop
+
         }
     };
     [[SJNetworkService shareInstance] asynRequestWithMethodName:@"get_balance"
@@ -402,16 +462,26 @@ static NetWorkEngine * sharedNetWorkEngine = NULL;
             if (aDelegate &&
                 [aDelegate respondsToSelector:aSel])
             {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+
                 [aDelegate performSelector:aSel
                                 withObject:usersList];
+#pragma clang diagnostic pop
+
             }
         }
         else {
             if (aDelegate &&
                 [aDelegate respondsToSelector:aSel])
             {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+
                 [aDelegate performSelector:aSel
                                 withObject:nil];
+#pragma clang diagnostic pop
+
             }
         }
     };
@@ -422,8 +492,13 @@ static NetWorkEngine * sharedNetWorkEngine = NULL;
         if (aDelegate &&
             [aDelegate respondsToSelector:aSel])
         {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+
             [aDelegate performSelector:aSel
                             withObject:nil];
+#pragma clang diagnostic pop
+
         }
     };
     [[SJNetworkService shareInstance] asynRequestWithMethodName:@"GetRequestInfo"
@@ -463,16 +538,26 @@ static NetWorkEngine * sharedNetWorkEngine = NULL;
             if (aDelegate &&
                 [aDelegate respondsToSelector:aSel])
             {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+
                 [aDelegate performSelector:aSel
                                 withObject:usersList];
+#pragma clang diagnostic pop
+
             }
         }
         else {
             if (aDelegate &&
                 [aDelegate respondsToSelector:aSel])
             {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+
                 [aDelegate performSelector:aSel
                                 withObject:nil];
+#pragma clang diagnostic pop
+
             }
         }
     };
@@ -483,8 +568,13 @@ static NetWorkEngine * sharedNetWorkEngine = NULL;
         if (aDelegate &&
             [aDelegate respondsToSelector:aSel])
         {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+
             [aDelegate performSelector:aSel
                             withObject:nil];
+#pragma clang diagnostic pop
+
         }
     };
     [[SJNetworkService shareInstance] asynRequestWithMethodName:@"SendReceiveRequest"
@@ -533,8 +623,13 @@ static NetWorkEngine * sharedNetWorkEngine = NULL;
             if (aDelegate &&
                 [aDelegate respondsToSelector:aSel])
             {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+
                 [aDelegate performSelector:aSel
                                 withObject:usersList];
+#pragma clang diagnostic pop
+
             }
         }
     };
@@ -545,8 +640,13 @@ static NetWorkEngine * sharedNetWorkEngine = NULL;
         if (aDelegate &&
             [aDelegate respondsToSelector:aSel])
         {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+
             [aDelegate performSelector:aSel
                             withObject:nil];
+#pragma clang diagnostic pop
+
         }
     };
     [[SJNetworkService shareInstance] asynRequestWithMethodName:@"GetTempMeetingReply"
@@ -587,16 +687,26 @@ static NetWorkEngine * sharedNetWorkEngine = NULL;
             if (aDelegate &&
                 [aDelegate respondsToSelector:aSel])
             {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+
                 [aDelegate performSelector:aSel
                                 withObject:usersList];
+#pragma clang diagnostic pop
+
             }
         }
         else {
             if (aDelegate &&
                 [aDelegate respondsToSelector:aSel])
             {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+
                 [aDelegate performSelector:aSel
                                 withObject:nil];
+#pragma clang diagnostic pop
+
             }
         }
     };
@@ -607,8 +717,13 @@ static NetWorkEngine * sharedNetWorkEngine = NULL;
         if (aDelegate &&
             [aDelegate respondsToSelector:aSel])
         {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+
             [aDelegate performSelector:aSel
                             withObject:nil];
+#pragma clang diagnostic pop
+
         }
     };
     [[SJNetworkService shareInstance] asynRequestWithMethodName:@"MeetingStart"
@@ -654,16 +769,26 @@ static NetWorkEngine * sharedNetWorkEngine = NULL;
             if (aDelegate &&
                 [aDelegate respondsToSelector:aSel])
             {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+
                 [aDelegate performSelector:aSel
                                 withObject:usersList];
+#pragma clang diagnostic pop
+
             }
         }
         else {
             if (aDelegate &&
                 [aDelegate respondsToSelector:aSel])
             {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+
                 [aDelegate performSelector:aSel
                                 withObject:nil];
+#pragma clang diagnostic pop
+
             }
         }
     };
@@ -674,8 +799,13 @@ static NetWorkEngine * sharedNetWorkEngine = NULL;
         if (aDelegate &&
             [aDelegate respondsToSelector:aSel])
         {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+
             [aDelegate performSelector:aSel
                             withObject:nil];
+#pragma clang diagnostic pop
+
         }
     };
     [[SJNetworkService shareInstance] asynRequestWithMethodName:@"Meeting"
@@ -717,16 +847,26 @@ static NetWorkEngine * sharedNetWorkEngine = NULL;
             if (aDelegate &&
                 [aDelegate respondsToSelector:aSel])
             {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+
                 [aDelegate performSelector:aSel
                                 withObject:returnData];
+#pragma clang diagnostic pop
+
             }
         }
         else {
             if (aDelegate &&
                 [aDelegate respondsToSelector:aSel])
             {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+
                 [aDelegate performSelector:aSel
                                 withObject:nil];
+#pragma clang diagnostic pop
+
             }
         }
     };
@@ -737,8 +877,13 @@ static NetWorkEngine * sharedNetWorkEngine = NULL;
         if (aDelegate &&
             [aDelegate respondsToSelector:aSel])
         {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+
             [aDelegate performSelector:aSel
                             withObject:nil];
+#pragma clang diagnostic pop
+
         }
     };
     [[SJNetworkService shareInstance] asynRequestWithMethodName:@"GetReivpient"
@@ -779,16 +924,26 @@ static NetWorkEngine * sharedNetWorkEngine = NULL;
             if (aDelegate &&
                 [aDelegate respondsToSelector:aSel])
             {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+
                 [aDelegate performSelector:aSel
                                 withObject:usersList];
+#pragma clang diagnostic pop
+
             }
         }
         else {
             if (aDelegate &&
                 [aDelegate respondsToSelector:aSel])
             {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+
                 [aDelegate performSelector:aSel
                                 withObject:nil];
+#pragma clang diagnostic pop
+
             }
         }
     };
@@ -799,8 +954,13 @@ static NetWorkEngine * sharedNetWorkEngine = NULL;
         if (aDelegate &&
             [aDelegate respondsToSelector:aSel])
         {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+
             [aDelegate performSelector:aSel
                             withObject:nil];
+#pragma clang diagnostic pop
+
         }
     };
     [[SJNetworkService shareInstance] asynRequestWithMethodName:@"MeetingEnd"
@@ -838,16 +998,26 @@ static NetWorkEngine * sharedNetWorkEngine = NULL;
             if (aDelegate &&
                 [aDelegate respondsToSelector:aSel])
             {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+
                 [aDelegate performSelector:aSel
                                 withObject:usersList];
+#pragma clang diagnostic pop
+
             }
         }
         else {
             if (aDelegate &&
                 [aDelegate respondsToSelector:aSel])
             {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+
                 [aDelegate performSelector:aSel
                                 withObject:nil];
+#pragma clang diagnostic pop
+
             }
         }
     };
@@ -858,8 +1028,13 @@ static NetWorkEngine * sharedNetWorkEngine = NULL;
         if (aDelegate &&
             [aDelegate respondsToSelector:aSel])
         {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+
             [aDelegate performSelector:aSel
                             withObject:nil];
+#pragma clang diagnostic pop
+
         }
     };
     [[SJNetworkService shareInstance] asynRequestWithMethodName:@"StopRequest"
@@ -895,16 +1070,26 @@ static NetWorkEngine * sharedNetWorkEngine = NULL;
             if (aDelegate &&
                 [aDelegate respondsToSelector:aSel])
             {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+
                 [aDelegate performSelector:aSel
                                 withObject:returnData];
+#pragma clang diagnostic pop
+
             }
         }
         else {
             if (aDelegate &&
                 [aDelegate respondsToSelector:aSel])
             {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+
                 [aDelegate performSelector:aSel
                                 withObject:nil];
+#pragma clang diagnostic pop
+
             }
         }
     };
@@ -915,8 +1100,13 @@ static NetWorkEngine * sharedNetWorkEngine = NULL;
         if (aDelegate &&
             [aDelegate respondsToSelector:aSel])
         {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+
             [aDelegate performSelector:aSel
                             withObject:nil];
+#pragma clang diagnostic pop
+
         }
     };
     [[SJNetworkService shareInstance] asynRequestWithMethodName:@"CheckMeeting"
@@ -925,6 +1115,245 @@ static NetWorkEngine * sharedNetWorkEngine = NULL;
                                                    andSuccBlock:reciveInviteUser
                                                    andFailBlock:reciveInviteUserFail];
 
+}
+/**
+ *	@brief	添加登陆时间
+ *
+ *	@param 	sUserId 	自己的id
+ */
+
+- (void)addLastLoginTimeByUserId:(NSString *)sUserId
+{
+    NSMutableDictionary *getParams = [[NSMutableDictionary alloc]init];
+    [getParams assemblyValue:sUserId key:@"userid" optional:NO];
+    //成功回調
+    void (^reciveInviteUser)(ASIHTTPRequest * request);
+    reciveInviteUser = ^(ASIHTTPRequest * request) {
+        DLog(@"receive addLastLoginTime return");
+    };
+    //失敗回調
+    void (^reciveInviteUserFail)(ASIHTTPRequest * request);
+    reciveInviteUserFail = ^(ASIHTTPRequest * request) {
+        DLog(@"receive addLastLoginTime return");
+    };
+    [[SJNetworkService shareInstance] asynRequestWithMethodName:@"AddLastLoginTime"
+                                                   andGetParams:getParams
+                                                  andPostParams:nil
+                                                   andSuccBlock:reciveInviteUser
+                                                   andFailBlock:reciveInviteUserFail];
+
+
+}
+/**
+ *	@brief	更新个人资料
+ *
+ *	@param 	sUserId 	自己id
+ *	@param 	sName 	自己昵称
+ *	@param 	sAddress 	地址
+ *	@param 	sPhone 	电话
+ */
+- (void)updateUserInfoByUserId:(NSString *)sUserId
+                   andNikeName:(NSString *)sName
+                    andAddress:(NSString *)sAddress
+                      andPhone:(NSString *)sPhone
+                      delegate:(id) aDelegate
+                           sel:(SEL) aSel
+{
+    NSMutableDictionary *getParams = [[NSMutableDictionary alloc]init];
+    [getParams assemblyValue:sUserId key:@"userid" optional:NO];
+    [getParams assemblyValue:sName key:@"nikeName" optional:YES];
+    [getParams assemblyValue:sAddress key:@"address" optional:YES];
+    [getParams assemblyValue:sPhone key:@"phone" optional:YES];
+
+    //成功回調
+    void (^reciveInviteUser)(ASIHTTPRequest * request);
+    reciveInviteUser = ^(ASIHTTPRequest * request) {
+        DLog(@"receive UpdateUserInfo return");
+        __block NSDictionary *returnData = [[request responseData] objectFromJSONData];
+        if (returnData&&[[returnData objectForKey:@"flag"] isEqualToString:@"SUCCESS" ])
+        {
+            if (aDelegate &&
+                [aDelegate respondsToSelector:aSel])
+            {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+                
+                [aDelegate performSelector:aSel
+                                withObject:returnData];
+#pragma clang diagnostic pop
+                
+            }
+        }
+        else {
+            if (aDelegate &&
+                [aDelegate respondsToSelector:aSel])
+            {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+                
+                [aDelegate performSelector:aSel
+                                withObject:nil];
+#pragma clang diagnostic pop
+                
+            }
+        }
+    };
+    //失敗回調
+    void (^reciveInviteUserFail)(ASIHTTPRequest * request);
+    reciveInviteUserFail = ^(ASIHTTPRequest * request) {
+        DLog(@"receive UpdateUserInfo return");
+        if (aDelegate &&
+            [aDelegate respondsToSelector:aSel])
+        {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+            
+            [aDelegate performSelector:aSel
+                            withObject:nil];
+#pragma clang diagnostic pop
+            
+        }
+    };
+    [[SJNetworkService shareInstance] asynRequestWithMethodName:@"UpdateUserInfo"
+                                                   andGetParams:getParams
+                                                  andPostParams:nil
+                                                   andSuccBlock:reciveInviteUser
+                                                   andFailBlock:reciveInviteUserFail];
+
+}
+/**
+ *	@brief	获取某人的余额
+ *
+ *	@param 	sUserId 	查询用户id
+ */
+- (void)getUserFundByUserId:(NSString *)sUserId
+                   delegate:(id) aDelegate
+                        sel:(SEL) aSel
+{
+    NSMutableDictionary *getParams = [[NSMutableDictionary alloc]init];
+    [getParams assemblyValue:sUserId key:@"userid" optional:NO];
+    
+    //成功回調
+    void (^reciveInviteUser)(ASIHTTPRequest * request);
+    reciveInviteUser = ^(ASIHTTPRequest * request) {
+        DLog(@"receive GetUserFund return");
+        __block NSDictionary *returnData = [[request responseData] objectFromJSONData];
+        if (returnData&&[[returnData objectForKey:@"flag"] isEqualToString:@"T" ])
+        {
+            if (aDelegate &&
+                [aDelegate respondsToSelector:aSel])
+            {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+                
+                [aDelegate performSelector:aSel
+                                withObject:returnData];
+#pragma clang diagnostic pop
+                
+            }
+        }
+        else {
+            if (aDelegate &&
+                [aDelegate respondsToSelector:aSel])
+            {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+                
+                [aDelegate performSelector:aSel
+                                withObject:nil];
+#pragma clang diagnostic pop
+                
+            }
+        }
+    };
+    //失敗回調
+    void (^reciveInviteUserFail)(ASIHTTPRequest * request);
+    reciveInviteUserFail = ^(ASIHTTPRequest * request) {
+        DLog(@"receive GetUserFund return");
+        if (aDelegate &&
+            [aDelegate respondsToSelector:aSel])
+        {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+            
+            [aDelegate performSelector:aSel
+                            withObject:nil];
+#pragma clang diagnostic pop
+            
+        }
+    };
+    [[SJNetworkService shareInstance] asynRequestWithMethodName:@"GetUserFund"
+                                                   andGetParams:getParams
+                                                  andPostParams:nil
+                                                   andSuccBlock:reciveInviteUser
+                                                   andFailBlock:reciveInviteUserFail];
+}
+/**
+ *	@brief	获取某人的信息
+ *
+ *	@param 	sUserId 	查询用户id
+ */
+- (void)getUserInfoByUserId:(NSString *)sUserId
+                   delegate:(id) aDelegate
+                        sel:(SEL) aSel
+{
+    NSMutableDictionary *getParams = [[NSMutableDictionary alloc]init];
+    [getParams assemblyValue:sUserId key:@"userid" optional:NO];
+    
+    //成功回調
+    void (^reciveInviteUser)(ASIHTTPRequest * request);
+    reciveInviteUser = ^(ASIHTTPRequest * request) {
+        DLog(@"receive GetUserInfo return");
+        __block NSDictionary *returnData = [[request responseData] objectFromJSONData];
+        if (returnData&&[[returnData objectForKey:@"flag"] isEqualToString:@"T" ])
+        {
+            if (aDelegate &&
+                [aDelegate respondsToSelector:aSel])
+            {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+                
+                [aDelegate performSelector:aSel
+                                withObject:returnData];
+#pragma clang diagnostic pop
+                
+            }
+        }
+        else {
+            if (aDelegate &&
+                [aDelegate respondsToSelector:aSel])
+            {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+                
+                [aDelegate performSelector:aSel
+                                withObject:nil];
+#pragma clang diagnostic pop
+                
+            }
+        }
+    };
+    //失敗回調
+    void (^reciveInviteUserFail)(ASIHTTPRequest * request);
+    reciveInviteUserFail = ^(ASIHTTPRequest * request) {
+        DLog(@"receive GetUserInfo return");
+        if (aDelegate &&
+            [aDelegate respondsToSelector:aSel])
+        {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+            
+            [aDelegate performSelector:aSel
+                            withObject:nil];
+#pragma clang diagnostic pop
+            
+        }
+    };
+    [[SJNetworkService shareInstance] asynRequestWithMethodName:@"GetUserInfo"
+                                                   andGetParams:getParams
+                                                  andPostParams:nil
+                                                   andSuccBlock:reciveInviteUser
+                                                   andFailBlock:reciveInviteUserFail];
 }
 
 @end

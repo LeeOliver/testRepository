@@ -26,10 +26,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[NetWorkEngine shareInstance]getUserFundByUserId:[NetWorkEngine shareInstance].personID delegate:self sel:@selector(getUserFundReturn:)];
+    MBProgressHUD *HUD = [MBProgressHUD showHUDAddedTo:self.navigationController.view
+                                              animated:YES];
+    HUD.labelText = @"正在加載";
+
     [self initUI];
 	// Do any additional setup after loading the view.
 }
-
+- (void)getUserFundReturn:(NSDictionary *)iData
+{
+    [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
+    _iDataSource = iData;
+    [_iTable reloadData];
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -77,6 +87,7 @@
     saveBtn.center = CGPointMake(MAINSCREENWIDTH/2, 382);
     [self.view addSubview:saveBtn];
     
+    _iDataSource = @{@"fund":@"",@"last_login_time":@""};
 }
 - (void)popViewController
 {
@@ -113,12 +124,13 @@
     switch ([indexPath row]){
         case 0:
         {
-            sLabel.text = [NSString stringWithFormat:@"当前余额:200"];
+            
+            sLabel.text = [NSString stringWithFormat:@"当前余额:%@",[_iDataSource objectForKey:@"fund"]];
         }
             break;
         case 1:
         {
-            sLabel.text = [NSString stringWithFormat:@"结算截止于2013年8月9日 10：25：00"];
+            sLabel.text = [NSString stringWithFormat:@"结算截止于%@",[_iDataSource objectForKey:@"last_login_time"]];
         }
             break;
             

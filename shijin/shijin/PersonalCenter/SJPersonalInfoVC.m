@@ -26,10 +26,21 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[NetWorkEngine shareInstance]getUserInfoByUserId:[NetWorkEngine shareInstance].personID delegate:self sel:@selector(getInfoReturn:)];
+    MBProgressHUD *HUD = [MBProgressHUD showHUDAddedTo:self.navigationController.view
+                                              animated:YES];
+    HUD.labelText = @"正在加載";
+
     [self initUI];
 	// Do any additional setup after loading the view.
 }
-
+- (void)getInfoReturn:(NSDictionary*)idata
+{
+    [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
+    [NetWorkEngine shareInstance].nikename = [idata objectForKey:@"nick_name"];
+    _iDataSource = idata;
+    [_iTable reloadData];
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -77,6 +88,8 @@
     saveBtn.frame = CGRectMake(0, 0, 81, 28);
     saveBtn.center = CGPointMake(MAINSCREENWIDTH/2, 382);
     [self.view addSubview:saveBtn];
+    
+    _iDataSource = @{@"add_time":@"",@"address":@"",@"last_login_time":@"",@"phone":@"",@"nick_name":@""};
 
 }
 - (void)popViewController
@@ -114,7 +127,7 @@
     switch ([indexPath row]){
         case 0:
         {
-            sLabel.text = [NSString stringWithFormat:@"姓名:%@",[NetWorkEngine shareInstance].nikename];
+            sLabel.text = [NSString stringWithFormat:@"姓名:%@",[_iDataSource objectForKey:@"nick_name"]];
         }
             break;
         case 1:
@@ -124,22 +137,22 @@
             break;
         case 2:
         {
-            sLabel.text = [NSString stringWithFormat:@"电话:%@",[NetWorkEngine shareInstance].personID];
+            sLabel.text = [NSString stringWithFormat:@"电话:%@",[_iDataSource objectForKey:@"phone"]];
         }
             break;
         case 3:
         {
-            sLabel.text = [NSString stringWithFormat:@"联系地址:%@",[NetWorkEngine shareInstance].personID];
+            sLabel.text = [NSString stringWithFormat:@"联系地址:%@",[_iDataSource objectForKey:@"address"]];
         }
             break;
         case 4:
         {
-            sLabel.text = [NSString stringWithFormat:@"注册时间:%@",[NetWorkEngine shareInstance].personID];
+            sLabel.text = [NSString stringWithFormat:@"注册时间:%@",[_iDataSource objectForKey:@"add_time"]];
         }
             break;
         case 5:
         {
-            sLabel.text = [NSString stringWithFormat:@"最后登录:%@",[NetWorkEngine shareInstance].personID];
+            sLabel.text = [NSString stringWithFormat:@"最后登录:%@",[_iDataSource objectForKey:@"last_login_time"]];
         }
             break;
 

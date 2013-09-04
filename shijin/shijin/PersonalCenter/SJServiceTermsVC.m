@@ -102,7 +102,7 @@
 
     
     UILabel *tempLabel = [[UILabel alloc]initWithFrame:CGRectMake(20, 2, 280, 70)];
-    tempLabel.textAlignment = UITextAlignmentLeft;
+    tempLabel.textAlignment = NSTextAlignmentLeft;
     tempLabel.textColor=[UIColor colorWithRed:70/255.0f green:100/255.0f blue:130/255.0f alpha:1.0f];
     tempLabel.backgroundColor = [UIColor clearColor];
     tempLabel.tag = 2000;

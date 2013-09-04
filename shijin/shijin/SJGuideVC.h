@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SJGuideVC : UIViewController
-
+@interface SJGuideVC : UIViewController<UIScrollViewDelegate>
+{
+    int _kCount;
+    UIScrollView *_mainGuide;
+}
 @end

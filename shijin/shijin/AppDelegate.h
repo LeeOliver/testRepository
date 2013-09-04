@@ -12,6 +12,7 @@
 #import "SJPersonalCenterVC.h"
 #import "SJReservationVCViewController.h"
 #import "Reachability.h"
+#import "SJGuideVC.h"
 @interface AppDelegate : UIResponder <UIApplicationDelegate,UITabBarControllerDelegate>
 {
     RXCustomTabBar                  *_tabBarController;///根控制器

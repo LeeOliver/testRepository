@@ -41,7 +41,11 @@ static SJTimeEngine * sharedTimeEngine = NULL;
     if (_aDelegate &&
         [_aDelegate respondsToSelector:_aSel])
     {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
         [_aDelegate performSelector:_aSel];
+#pragma clang diagnostic pop
+
     }
 }
 

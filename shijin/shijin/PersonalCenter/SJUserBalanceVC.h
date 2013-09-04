@@ -11,6 +11,7 @@
 @interface SJUserBalanceVC : UIViewController<UITableViewDelegate,UITableViewDataSource>
 {
     UITableView *_iTable;
+    NSDictionary *_iDataSource;
 }
 
 
