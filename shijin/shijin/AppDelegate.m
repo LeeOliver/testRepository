@@ -18,6 +18,12 @@
 @synthesize circularCountTime   = _circularCountTime;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+///*
+    [self addRegisterForRemoteNotification:application];
+//*/
+    
+    
     [application setStatusBarStyle:UIStatusBarStyleBlackOpaque];
     
 //    [self StartTimer];
@@ -33,7 +39,65 @@
     [self.window makeKeyAndVisible];
     return YES;
 }
- 
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
+    // 处理推送消息
+    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"通知" message:@"我的信息" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil, nil];
+    [alert show];
+    NSLog(@"%@", userInfo);
+    //以警告框的方式来显示推送消息
+    if ([[userInfo objectForKey:@"aps"] objectForKey:@"alert"]!=NULL) {
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"经过推送发送过来的消息"
+                                                        message:[[userInfo objectForKey:@"aps"] objectForKey:@"alert"]
+                                                       delegate:self
+                                              cancelButtonTitle:@"关闭"
+                                              otherButtonTitles:@"处理",nil];
+        [alert show];
+    }
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    NSLog(@"设备令牌: %@", deviceToken);
+
+    NSString *tokeStr = [NSString stringWithFormat:@"%@",deviceToken];
+
+    if ([tokeStr length] == 0) {
+        return;
+    }
+
+    NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:@"<>"];
+    tokeStr = [tokeStr stringByTrimmingCharactersInSet:set]; 
+    tokeStr = [tokeStr stringByReplacingOccurrencesOfString:@" " withString:@""]; 
+//    NSString *strURL = @"http://192.168.1.103/push_chat_service.php";
+    NSString *strURL = @"http://www.nicelz.com/ljm/push.php?deviceToken=fd4a72f7ce3237dea41f1cea215ce0de9fbe249a475c0facf9adc8be1abdf07f&message=adf";
+    NSURL *url = [NSURL URLWithString:strURL];
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+    [request setPostValue:tokeStr forKey:@"token"];
+    [request setPostValue:@"S637AH2F36.shijin.shijin" forKey:@"appid" ];
+    [request setDelegate:self];
+    NSLog(@"发送给服务器");
+
+    [request startAsynchronous];  
+}
+- (void)addRegisterForRemoteNotification:(UIApplication *)application
+{
+    //注册接收通知类型
+
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
+     (UIRemoteNotificationTypeBadge |
+      UIRemoteNotificationTypeSound |
+      UIRemoteNotificationTypeAlert)];
+
+    //设置图标标记
+    application.applicationIconBadgeNumber = 1;
+
+}
+- (void)application:(UIApplication*)application
+didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
+{
+    NSLog(@"获得令牌失败: %@", error);
+}
+
 - (BOOL)testLocalWiFi
 {
     //檢測網絡鏈接狀況
@@ -186,7 +250,8 @@
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     NSLog(@"2222");
-    
+    application.applicationIconBadgeNumber = 0;
+
     switch (self.kSystemFlag) {
         case kCOLLECTION_END:
         case kCOLLECTION_NORMAL:

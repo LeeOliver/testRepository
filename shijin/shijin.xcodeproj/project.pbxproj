@@ -1449,6 +1449,8 @@
 		18720044179FD13700018856 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yasheng Chen (JZES8XQ93L)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yasheng Chen (JZES8XQ93L)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "shijin/shijin-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -1460,6 +1462,8 @@
 				);
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "时金";
+				PROVISIONING_PROFILE = "9149CEDB-EF75-404A-9E79-86285356C0A7";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9149CEDB-EF75-404A-9E79-86285356C0A7";
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1468,6 +1472,8 @@
 		18720045179FD13700018856 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yasheng Chen (JZES8XQ93L)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yasheng Chen (JZES8XQ93L)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "shijin/shijin-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -1479,6 +1485,8 @@
 				);
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "时金";
+				PROVISIONING_PROFILE = "9149CEDB-EF75-404A-9E79-86285356C0A7";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9149CEDB-EF75-404A-9E79-86285356C0A7";
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = app;
 			};
