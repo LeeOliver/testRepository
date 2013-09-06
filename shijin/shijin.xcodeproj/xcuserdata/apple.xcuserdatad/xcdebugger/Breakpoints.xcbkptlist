@@ -289,32 +289,6 @@
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "shijin/ReservationConsultation/SJReservationVC.m"
-         timestampString = "399629504.759073"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "47"
-         endingLineNumber = "47"
-         landmarkName = "-viewDidLoad"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "shijin/ReservationConsultation/SJReservationVC.m"
-         timestampString = "399629504.759073"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "77"
-         endingLineNumber = "77"
-         landmarkName = "-initUIOne"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
          filePath = "shijin/ReservationConsultation/SJCollectionVC.m"
          timestampString = "399966916.558169"
          startingColumnNumber = "9223372036854775807"
@@ -374,6 +348,19 @@
          startingLineNumber = "493"
          endingLineNumber = "493"
          landmarkName = "-stopAction"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "shijin/PersonalCenter/SJAlipayVC.m"
+         timestampString = "400059004.019056"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "55"
+         endingLineNumber = "55"
+         landmarkName = "-initUI"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

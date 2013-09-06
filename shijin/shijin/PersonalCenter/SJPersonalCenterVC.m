@@ -8,6 +8,7 @@
 
 #import "SJPersonalCenterVC.h"
 #import "LEffectLabel.h"
+#import "SJAlipayVC.h"
 @interface SJPersonalCenterVC ()
 
 @end
@@ -162,8 +163,10 @@
         tLabel.text = @"";
         tLabel.hidden = NO;
         tLabel.text = @"用户充值";
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        cell.userInteractionEnabled = NO;
+        cell.userInteractionEnabled = YES;
 
     }
     
@@ -242,6 +245,8 @@
 //        tLabel.text = @"用户充值";
 //        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 //        cell.userInteractionEnabled = NO;
+        SJAlipayVC *next = [[SJAlipayVC alloc]init];
+        [self.navigationController pushViewController:next animated:YES];
         
     }
 }

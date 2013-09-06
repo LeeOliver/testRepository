@@ -73,6 +73,7 @@
 		1829C54B17D482560046320D /* main_guide_two@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1829C53F17D482560046320D /* main_guide_two@2x.png */; };
 		1829C54C17D482560046320D /* main_guide_two5.png in Resources */ = {isa = PBXBuildFile; fileRef = 1829C54017D482560046320D /* main_guide_two5.png */; };
 		1829C54D17D482560046320D /* main_guide_two5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1829C54117D482560046320D /* main_guide_two5@2x.png */; };
+		1834C5CA17D81B100040A3CB /* SJAlipayVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1834C5C917D81B100040A3CB /* SJAlipayVC.m */; };
 		1850156E17D0887800BBB303 /* reservation_logo_rbg.png in Resources */ = {isa = PBXBuildFile; fileRef = 1850156C17D0887800BBB303 /* reservation_logo_rbg.png */; };
 		1850156F17D0887800BBB303 /* reservation_logo_rbg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1850156D17D0887800BBB303 /* reservation_logo_rbg@2x.png */; };
 		18631A2717C7446E0084105B /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18631A2517C7446E0084105B /* Icon.png */; };
@@ -306,6 +307,8 @@
 		1829C53F17D482560046320D /* main_guide_two@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_guide_two@2x.png"; sourceTree = "<group>"; };
 		1829C54017D482560046320D /* main_guide_two5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main_guide_two5.png; sourceTree = "<group>"; };
 		1829C54117D482560046320D /* main_guide_two5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_guide_two5@2x.png"; sourceTree = "<group>"; };
+		1834C5C817D81B100040A3CB /* SJAlipayVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SJAlipayVC.h; path = PersonalCenter/SJAlipayVC.h; sourceTree = "<group>"; };
+		1834C5C917D81B100040A3CB /* SJAlipayVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SJAlipayVC.m; path = PersonalCenter/SJAlipayVC.m; sourceTree = "<group>"; };
 		1850156C17D0887800BBB303 /* reservation_logo_rbg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reservation_logo_rbg.png; sourceTree = "<group>"; };
 		1850156D17D0887800BBB303 /* reservation_logo_rbg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reservation_logo_rbg@2x.png"; sourceTree = "<group>"; };
 		18631A2517C7446E0084105B /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = Icon/Icon.png; sourceTree = "<group>"; };
@@ -841,6 +844,8 @@
 				18F3AFD017B4C2E900A8F538 /* SJUserBalanceVC.m */,
 				18F3AFD217B4C8FA00A8F538 /* SJServiceTermsVC.h */,
 				18F3AFD317B4C8FA00A8F538 /* SJServiceTermsVC.m */,
+				1834C5C817D81B100040A3CB /* SJAlipayVC.h */,
+				1834C5C917D81B100040A3CB /* SJAlipayVC.m */,
 			);
 			name = "Personal center";
 			sourceTree = "<group>";
@@ -1298,6 +1303,7 @@
 				18FF42A817CC33A7000F9AFB /* MBProgressHUD.m in Sources */,
 				18E4880717D0785C002A1CFD /* CircularProgressView.m in Sources */,
 				18FDFF6617D6C8EA0004C29C /* LEffectLabel.m in Sources */,
+				1834C5CA17D81B100040A3CB /* SJAlipayVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
