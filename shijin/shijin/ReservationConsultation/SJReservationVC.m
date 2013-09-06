@@ -739,15 +739,11 @@
 
 - (void)meeting 
 {
-    _kTotalTimeS++;
-    if (_kTotalTimeS == 1) {
-        _kTotalTimeS = 0;
-        _kTotalTimeM++;
-        _serverTime.text = [NSString stringWithFormat:@"服务时间:%d分钟",_kTotalTimeM];
-        _kCountFund = [[_dataDic objectForKey:@"com_rate"]doubleValue] * _kTotalTimeM;
-    }
+    _serverTime.text = [NSString stringWithFormat:@"服务时间:%@分钟",[AppDelegate App].circularCountTime];
+    _kCountFund = [[_dataDic objectForKey:@"com_rate"]doubleValue] * [[AppDelegate App].circularCountTime integerValue];
+    
     NSLog(@"\ns - %d \nm - %d \nf - %.2f \n",_kTotalTimeS,_kTotalTimeM,_kCountFund);
-    [[NetWorkEngine shareInstance]meetingByResponserId:[_dataDic objectForKey:@"id"] andRequesterId:[NetWorkEngine shareInstance].userID andCountFund:[NSString stringWithFormat:@"%.2f",_kCountFund] andTotalTime:[NSString stringWithFormat:@"%d",_kTotalTimeM] delegate:self sel:@selector(meetingReturn:)];
+    [[NetWorkEngine shareInstance]meetingByResponserId:[_dataDic objectForKey:@"id"] andRequesterId:[NetWorkEngine shareInstance].userID andCountFund:[NSString stringWithFormat:@"%.2f",_kCountFund] andTotalTime:[NSString stringWithFormat:@"%d",[[AppDelegate App].circularCountTime intValue]] delegate:self sel:@selector(meetingReturn:)];
 }
 - (void)meetingReturn:(NSDictionary*)iData
 {

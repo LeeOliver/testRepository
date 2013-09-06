@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SJAlipayVC : UIViewController<UIWebViewDelegate>
+@interface SJAlipayVC : UIViewController<UITextFieldDelegate>
 {
-    UIWebView *_webView;
+    UITextField *_fundText;
+    BOOL bAlipay;
+    UIButton    *_btnBackGround;
+
 }
 @end

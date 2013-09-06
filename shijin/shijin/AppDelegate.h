@@ -21,6 +21,8 @@
     NSTimer                         *_codeTimer;//计时器
     int                             mTime;//时间
     int                             stopTime;//计时上限
+    NSString                        *_circularCountTime;//计时器计时
+    
 }
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) RXCustomTabBar                *tabBarController;///根控制器
@@ -29,6 +31,7 @@
 @property (strong ,nonatomic) NSTimer *codeTimer;
 @property (nonatomic) int kUIflag;
 @property (nonatomic) int kSystemFlag;
+@property (strong ,nonatomic) NSString                      *circularCountTime;//计时器计时
 ///數據共享
 +(AppDelegate *)App;
 ///网络测试

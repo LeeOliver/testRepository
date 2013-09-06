@@ -15,6 +15,7 @@
 @synthesize personalVC          = _personalVC;
 @synthesize reservationVC       = _reservationVC;
 @synthesize kUIflag             = _kUIflag;
+@synthesize circularCountTime   = _circularCountTime;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [application setStatusBarStyle:UIStatusBarStyleBlackOpaque];
@@ -22,6 +23,7 @@
 //    [self StartTimer];
     [UIApplication sharedApplication].idleTimerDisabled = YES;//防止锁屏
     stopTime = 0;
+    _circularCountTime = @"0";
     [NetWorkEngine shareInstance].isPayment = YES;
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.

@@ -139,55 +139,6 @@
     peopleSigninBtn.center = CGPointMake(MAINSCREENWIDTH/2-5, MAINSCREENHEIGHT/5*4+35);
     [self.view addSubview:peopleSigninBtn];
     
-/**
-    
-    UILabel *zhanghao = [[UILabel alloc]initWithFrame:CGRectMake(30, 60, 60, 20)];
-    zhanghao.text = @"账号:";
-    [self.view addSubview:zhanghao];
-    
-    _tfLoginID = [[UITextField alloc]initWithFrame:CGRectMake(120, 60, 120, 20)];
-    _tfLoginID.placeholder = @"请输入邮箱地址";
-    _tfLoginID.delegate = self;
-    [self.view addSubview:_tfLoginID];
-    
-    UILabel *mima = [[UILabel alloc]initWithFrame:CGRectMake(30, 100, 60, 20)];
-    mima.text = @"密码:";
-    [self.view addSubview:mima];
-    
-    _tfPassWord = [[UITextField alloc]initWithFrame:CGRectMake(120, 100, 120, 20)];
-    _tfPassWord.placeholder = @"请输入邮箱地址";
-    _tfPassWord.delegate = self;
-    [self.view addSubview:_tfPassWord];
-
-    _btnLogin = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    _btnLogin.frame = CGRectMake(30, 140, 30, 30);
-    _btnLogin.tag = 1000;
-    [_btnLogin setTitle:@"付款" forState:UIControlStateNormal];
-    [_btnLogin addTarget:self action:@selector(actionBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:_btnLogin];
-    
-    UILabel *payment = [[UILabel alloc]initWithFrame:CGRectMake(70, 140, 120, 30)];
-    payment.text = @"付款";
-    [self.view addSubview:payment];
-    
-    _btnLogin1 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    _btnLogin1.frame = CGRectMake(30, 180, 30, 30);
-    _btnLogin1.tag = 1001;
-    [_btnLogin1 setTitle:@"收款" forState:UIControlStateNormal];
-    [_btnLogin1 addTarget:self action:@selector(actionBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:_btnLogin1];
-
-    UILabel *payment1 = [[UILabel alloc]initWithFrame:CGRectMake(70, 180, 120, 30)];
-    payment1.text = @"收款";
-    [self.view addSubview:payment1];
-
-    _btnLogin2 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    _btnLogin2.frame = CGRectMake(100, 220, 120, 30);
-    _btnLogin2.tag = 1002;
-    [_btnLogin2 setTitle:@"登陆" forState:UIControlStateNormal];
-    [_btnLogin2 addTarget:self action:@selector(actionBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:_btnLogin2];
-*/
 }
 
 - (void)actionBtn:(id)sender
