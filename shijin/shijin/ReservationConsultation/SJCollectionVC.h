@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CircularProgressView.h"
+#import "ClockView.h"
 @interface SJCollectionVC : UIViewController
 {
     UIView          *_topCopyView;
@@ -26,7 +26,7 @@
     UILabel         *_topFundLabel;
     UILabel         *_topServiceLabel;
 
-    CircularProgressView *_progressCircularView;
+    ClockView *_progressCircularView;
     UIButton        *_startOrEndBtn;//开始结束按钮
     NSString        *_recordTime;//记录计时时间
     

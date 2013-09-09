@@ -11,8 +11,7 @@
 #define KSHOWUITWO      406
 #define KSHOWUITHREE    407
 #define KSHOWUIFOUR     408
-@interface SJReservationVC ()<CircularProgressDelegate>
-
+@interface SJReservationVC ()
 @end
 
 @implementation SJReservationVC
@@ -316,30 +315,35 @@
     title3.backgroundColor = [UIColor clearColor];
     title3.font = [UIFont systemFontOfSize:12.0f];
     [topView addSubview:title3];
-
-    UIColor *backColor = [UIColor colorWithRed:223.0/255.0 green:220.0/255.0 blue:222.0/255.0 alpha:1.0];
-    UIColor *backColor1 = [UIColor colorWithRed:240.0/255.0 green:240.0/255.0 blue:240.0/255.0 alpha:1.0];
     
-    UIColor *progressColor = [UIColor colorWithRed:225.0/255.0 green:209.0/255.0 blue:48.0/255.0 alpha:1.0];
-    UIColor *progressColor1 = [UIColor colorWithRed:252.0/255.0 green:112.0/255.0 blue:152.0/255.0 alpha:1.0];
-    UIColor *progressColor2 = [UIColor colorWithRed:54.0/255.0 green:189.0/255.0 blue:215.0/255.0 alpha:1.0];
+    UIColor *progressColor = [UIColor colorWithRed:125.0/255.0 green:133.0/255.0 blue:8.0/255.0 alpha:1.0];
+    UIColor *progressColor1 = [UIColor colorWithRed:13.0/255.0 green:85.0/255.0 blue:111.0/255.0 alpha:1.0];
+    UIColor *progressColor2 = [UIColor colorWithRed:120.0/255.0 green:180.0/255.0 blue:24.0/255.0 alpha:1.0];
 
-    _progressCircularView = [[CircularProgressView alloc] initWithFrame:CGRectMake(24, 20, 263, 263) backColor:backColor secountBackColor:backColor1 progressColor:progressColor2 appointmentColor:progressColor1 minuteColor:progressColor lineWidth:15 time:@"600" appointmentProgress:[NSString stringWithFormat:@"%d",_selectM]];
+    UIView *bs = [[UIView alloc]initWithFrame:CGRectMake(24, 15, 273, 275)];
+    bs.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"clock-bg.png"]];
+    [mainbox addSubview:bs];
 
-    _progressCircularView.delegate = self;
+    _progressCircularView = [[ClockView alloc] initWithFrame:CGRectMake(24, 15, 273, 275) backColor:[UIColor clearColor] secountBackColor:[UIColor clearColor] progressColor:progressColor2 appointmentColor:progressColor1 minuteColor:progressColor lineWidth:11 time:@"600" appointmentProgress:[NSString stringWithFormat:@"%d",_selectM]];
+    _progressCircularView.backgroundColor = [UIColor clearColor];
+	[_progressCircularView setHourHandImage:nil];
+	[_progressCircularView setMinHandImage:[UIImage imageNamed:@"clock-minu.png"].CGImage];
+	[_progressCircularView setSecHandImage:[UIImage imageNamed:@"clock-secound.png"].CGImage];
+	_progressCircularView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+//    _progressCircularView.delegate = self;
     
     [mainbox addSubview:_progressCircularView];
     
-    UIView *progressBackGroundView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 212, 212)];
-    progressBackGroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"reservation_time.png"]];
-    progressBackGroundView.center = CGPointMake(_progressCircularView.frame.size.width/2, _progressCircularView.frame.size.height/2);
-    [_progressCircularView addSubview:progressBackGroundView];
+//    UIView *progressBackGroundView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 212, 212)];
+//    progressBackGroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"reservation_time.png"]];
+//    progressBackGroundView.center = CGPointMake(_progressCircularView.frame.size.width/2, _progressCircularView.frame.size.height/2);
+//    [_progressCircularView addSubview:progressBackGroundView];
 
     _startOrEndBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [_startOrEndBtn setBackgroundImage:[UIImage imageNamed:@"reservation_start_request.png"] forState:UIControlStateNormal];
     [_startOrEndBtn addTarget:self action:@selector(meetingStart) forControlEvents:UIControlEventTouchUpInside];
-    _startOrEndBtn.frame = CGRectMake(0, 0, 20, 22);
-    _startOrEndBtn.center = CGPointMake(_progressCircularView.frame.size.width/2, _progressCircularView.frame.size.height/2);
+    _startOrEndBtn.frame = CGRectMake(0, 0, 40, 40);
+    _startOrEndBtn.center = CGPointMake(180, 120);
     [_progressCircularView addSubview:_startOrEndBtn];
 
     UIView *logoView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 193, 30)];
@@ -727,7 +731,7 @@
 - (void)meetingStartReturn:(NSDictionary *)iDataArr
 {
     if ([[iDataArr objectForKey:@"flag"]isEqualToString:@"Y"]) {
-        [_progressCircularView play];
+        [_progressCircularView start];
         [[SJTimeEngine shareInstance]loopTimerByTime:@"60" delegate:self sel:@selector(meeting)];
 
         [_startOrEndBtn setBackgroundImage:[UIImage imageNamed:@"reservation_end_request.png"] forState:UIControlStateNormal];
@@ -757,7 +761,7 @@
 - (void)meetingEndReturn:(NSDictionary *)iDataArr
 {
     if ([[iDataArr objectForKey:@"flag"]isEqualToString:@"Y"]) {
-        [_progressCircularView revert];
+        [_progressCircularView stop];
         [_startOrEndBtn setBackgroundImage:[UIImage imageNamed:@"reservation_start_request.png"] forState:UIControlStateNormal];
         
         [_startOrEndBtn removeTarget:self action:@selector(meetingEnd) forControlEvents:UIControlEventTouchUpInside];

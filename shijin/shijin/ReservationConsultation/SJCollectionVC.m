@@ -11,7 +11,7 @@
 #define KVIEWSHOWTWO    20002
 #define KVIEWSHOWTHREE  20003
 #define KVIEWSHOWFOUR   20004
-@interface SJCollectionVC ()<CircularProgressDelegate>
+@interface SJCollectionVC ()
 
 @end
 
@@ -162,23 +162,37 @@
     [_iUIViewIII addSubview:mainbox];
     mainbox.frame = CGRectMake(0, 110, _mainView.frame.size.width, _mainView.frame.size.height-110);
 
-    UIColor *backColor = [UIColor colorWithRed:223.0/255.0 green:220.0/255.0 blue:222.0/255.0 alpha:1.0];
-    UIColor *backColor1 = [UIColor colorWithRed:240.0/255.0 green:240.0/255.0 blue:240.0/255.0 alpha:1.0];
+//    UIColor *backColor = [UIColor colorWithRed:223.0/255.0 green:220.0/255.0 blue:222.0/255.0 alpha:1.0];
+//    UIColor *backColor1 = [UIColor colorWithRed:240.0/255.0 green:240.0/255.0 blue:240.0/255.0 alpha:1.0];
+//    
+//    UIColor *progressColor = [UIColor colorWithRed:225.0/255.0 green:209.0/255.0 blue:48.0/255.0 alpha:1.0];
+//    UIColor *progressColor1 = [UIColor colorWithRed:252.0/255.0 green:112.0/255.0 blue:152.0/255.0 alpha:1.0];
+//    UIColor *progressColor2 = [UIColor colorWithRed:54.0/255.0 green:189.0/255.0 blue:215.0/255.0 alpha:1.0];
+//    
+//    _progressCircularView = [[CircularProgressView alloc] initWithFrame:CGRectMake(24, 20, 263, 263) backColor:backColor secountBackColor:backColor1 progressColor:progressColor2 appointmentColor:progressColor1 minuteColor:progressColor lineWidth:15 time:@"600" appointmentProgress:[NSString stringWithFormat:@"%d",[[_iData objectForKey:@"service_time"]intValue]]];
+    UIColor *progressColor = [UIColor colorWithRed:125.0/255.0 green:133.0/255.0 blue:8.0/255.0 alpha:1.0];
+    UIColor *progressColor1 = [UIColor colorWithRed:13.0/255.0 green:85.0/255.0 blue:111.0/255.0 alpha:1.0];
+    UIColor *progressColor2 = [UIColor colorWithRed:120.0/255.0 green:180.0/255.0 blue:24.0/255.0 alpha:1.0];
     
-    UIColor *progressColor = [UIColor colorWithRed:225.0/255.0 green:209.0/255.0 blue:48.0/255.0 alpha:1.0];
-    UIColor *progressColor1 = [UIColor colorWithRed:252.0/255.0 green:112.0/255.0 blue:152.0/255.0 alpha:1.0];
-    UIColor *progressColor2 = [UIColor colorWithRed:54.0/255.0 green:189.0/255.0 blue:215.0/255.0 alpha:1.0];
+    UIView *bs = [[UIView alloc]initWithFrame:CGRectMake(24, 15, 273, 275)];
+    bs.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"clock-bg.png"]];
+    [mainbox addSubview:bs];
     
-    _progressCircularView = [[CircularProgressView alloc] initWithFrame:CGRectMake(24, 20, 263, 263) backColor:backColor secountBackColor:backColor1 progressColor:progressColor2 appointmentColor:progressColor1 minuteColor:progressColor lineWidth:15 time:@"600" appointmentProgress:[NSString stringWithFormat:@"%d",[[_iData objectForKey:@"service_time"]intValue]]];
-    
-    _progressCircularView.delegate = self;
+    _progressCircularView = [[ClockView alloc] initWithFrame:CGRectMake(24, 15, 273, 275) backColor:[UIColor clearColor] secountBackColor:[UIColor clearColor] progressColor:progressColor2 appointmentColor:progressColor1 minuteColor:progressColor lineWidth:11 time:@"600" appointmentProgress:[NSString stringWithFormat:@"%d",[[_iData objectForKey:@"service_time"]intValue]]];
+    _progressCircularView.backgroundColor = [UIColor clearColor];
+	[_progressCircularView setHourHandImage:nil];
+	[_progressCircularView setMinHandImage:[UIImage imageNamed:@"clock-minu.png"].CGImage];
+	[_progressCircularView setSecHandImage:[UIImage imageNamed:@"clock-secound.png"].CGImage];
+	_progressCircularView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+
+//    _progressCircularView.delegate = self;
     
     [mainbox addSubview:_progressCircularView];
     
-    UIView *progressBackGroundView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 212, 212)];
-    progressBackGroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"reservation_time.png"]];
-    progressBackGroundView.center = CGPointMake(_progressCircularView.frame.size.width/2, _progressCircularView.frame.size.height/2);
-    [_progressCircularView addSubview:progressBackGroundView];
+//    UIView *progressBackGroundView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 212, 212)];
+//    progressBackGroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"reservation_time.png"]];
+//    progressBackGroundView.center = CGPointMake(_progressCircularView.frame.size.width/2, _progressCircularView.frame.size.height/2);
+//    [_progressCircularView addSubview:progressBackGroundView];
     
     
     UIView *logoView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 193, 30)];
@@ -411,7 +425,7 @@
     if (![[iData objectForKey:@"start"] isKindOfClass:[NSNull class]] && [[iData objectForKey:@"start"]isEqualToString:@"Y"]) {
         [self setTopService:[NSString stringWithFormat:@"服务器状态:正在服务中"]];
         [self hideBackButton];
-        [_progressCircularView play];
+        [_progressCircularView start];
     }
     else if((![[iData objectForKey:@"start"] isKindOfClass:[NSNull class]] &&
              [[iData objectForKey:@"start"]isEqualToString:@"S"]) ||
@@ -421,7 +435,7 @@
         [self changeButtonAction:@selector(stopAction) andNewAction:@selector(backAction) andButton:[_topCopyView viewWithTag:10021]];
 
         [self setTopService:[NSString stringWithFormat:@"服务器状态:服务终止"]];
-        [_progressCircularView revert];
+        [_progressCircularView stop];
         [[SJTimeEngine shareInstance]stopTimer];
         [AppDelegate App].kUIflag = kCOLLECTIONUI_IV;
         [self updateViewUI];

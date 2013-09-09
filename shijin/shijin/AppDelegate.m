@@ -76,6 +76,19 @@
     [request setPostValue:@"S637AH2F36.shijin.shijin" forKey:@"appid" ];
     [request setDelegate:self];
     NSLog(@"发送给服务器");
+    __unsafe_unretained ASIHTTPRequest *trequest = request;
+    [trequest setCompletionBlock:^{
+     __block NSDictionary *returnData = [[request responseData] objectFromJSONData];
+        NSLog(@"returnData = %@",returnData);
+
+    }];
+    
+    [trequest setFailedBlock:^{
+//       DDLogError(@"WebAPI Error request:%@ response:%@",request.url, request.responseString);
+        
+        __block NSDictionary *returnData = [[request responseData] objectFromJSONData];
+        NSLog(@"returnData = %@",returnData);
+    }];
 
     [request startAsynchronous];  
 }

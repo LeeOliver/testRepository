@@ -102,6 +102,7 @@ appointmentProgress:(NSString *)appointmentProgress
     self.SecountProgress = (int)self.currentTime % 60 / 60.0f;
     self.progress = (int)(self.currentTime / 60) / 60.0f;
     [AppDelegate App].circularCountTime = [NSString stringWithFormat:@"%d",(int)(self.currentTime / 60)];
+    
     NSLog(@"\nself.SecountProgress   =   %f,\nself.progress   =   %f",self.SecountProgress,self.progress);
     
     //redraw back & progress circles
