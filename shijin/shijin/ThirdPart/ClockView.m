@@ -16,14 +16,19 @@
 
 - (void)start
 {
-    kSecount = 0;
-    kMinutes = 0;
-	timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateClock:) userInfo:nil repeats:YES];
-    
+    if (!self.isTimeing) {
+        kSecount = 0;
+        kMinutes = 0;
+        timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateClock:) userInfo:nil repeats:YES];
+        [self.timer fire];
+        self.isTimeing = YES;
+
+    }
 }
 
 - (void)stop
 {
+    self.isTimeing = NO;
 	[timer invalidate];
 	timer = nil;
 }
@@ -137,7 +142,7 @@ float Degrees2Radians(float degrees) { return degrees * M_PI / 180; }
 - (void)drawRect:(CGRect)rect
 {
     NSNumber *aRadius = [NSNumber numberWithFloat:self.frame.size.width / 2 - self.lineWidth / 2 - 5];
-    NSNumber *aAngle  = [NSNumber numberWithFloat:(CGFloat)(1.5 * M_PI)];
+//    NSNumber *aAngle  = [NSNumber numberWithFloat:(CGFloat)(1.5 * M_PI)];
     //circle 背景 外圈
     //    [self drawCircleBy:self.backColor andRadius:aRadius andAngle:aAngle andLineWidth:self.lineWidth];
     //中心画园
@@ -153,13 +158,13 @@ float Degrees2Radians(float degrees) { return degrees * M_PI / 180; }
     }
     
     //circle 背景 内圈
-    NSNumber *aRadius1 = [NSNumber numberWithFloat:44];
+    NSNumber *aRadius1 = [NSNumber numberWithFloat:43.5f];
     //    [self drawCircleBy:self.secountBackColor andRadius:aRadius1 andAngle:aAngle andLineWidth:self.lineWidth];
-    CGPoint point1 = CGPointMake(self.frame.size.width / 2 - 24,self.frame.size.height / 2 + 22);
+    CGPoint point1 = CGPointMake(self.frame.size.width / 2 - 25,self.frame.size.height / 2 + 21);
     
     if (self.SecountProgress != 0) {//circle 跑动 内圈
         NSNumber *aAngle1  = [NSNumber numberWithFloat:(CGFloat)(-M_PI_2 + self.SecountProgress * 2 * M_PI)];
-        [self drawCircleBy:self.progressColor andRadius:aRadius1 andAngle:aAngle1 andLineWidth:2.0f andCenter:point1];
+        [self drawCircleBy:self.progressColor andRadius:aRadius1 andAngle:aAngle1 andLineWidth:4.0f andCenter:point1];
     }
 }
 - (void)drawCircleBy:(UIColor *)circleColor andRadius:(NSNumber *)aRadius andAngle:(NSNumber *)aAangle andLineWidth:(CGFloat)aLineWidth andCenter:(CGPoint)aPoint
@@ -181,7 +186,7 @@ float Degrees2Radians(float degrees) { return degrees * M_PI / 180; }
     
 	float length = MIN(self.frame.size.width, self.frame.size.height)/2;
 	CGPoint c = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
-    CGPoint point1 = CGPointMake(self.frame.size.width / 2 - 24,self.frame.size.height / 2 + 22);
+    CGPoint point1 = CGPointMake(self.frame.size.width / 2 - 25,self.frame.size.height / 2 + 21);
     //指针中心位置
 	hourHand.position = minHand.position = c;
     secHand.position = point1;
@@ -216,7 +221,7 @@ float Degrees2Radians(float degrees) { return degrees * M_PI / 180; }
 	secHand.bounds = CGRectMake(0,0,w,h);
     
 	hourHand.anchorPoint = CGPointMake(0.5,0.0);
-	minHand.anchorPoint = CGPointMake(0.5,0.2);
+	minHand.anchorPoint = CGPointMake(0.5,0.18);
 	secHand.anchorPoint = CGPointMake(0.5,0.2);
 	containerLayer.anchorPoint = CGPointMake(0.5, 0.5);
 }
@@ -241,6 +246,7 @@ float Degrees2Radians(float degrees) { return degrees * M_PI / 180; }
 		[containerLayer addSublayer:minHand];
 		[containerLayer addSublayer:secHand];
 		[self.layer addSublayer:containerLayer];
+        self.isTimeing = NO;
 	}
 	return self;
 }
@@ -256,7 +262,7 @@ appointmentProgress:(NSString *)appointmentProgress
 {
     self = [super initWithFrame:frame];
     if (self) {
-        
+        self.isTimeing = NO;
         self.backgroundColor = [UIColor clearColor];
         self.backColor = backColor;
         self.secountBackColor = secountBackColor;

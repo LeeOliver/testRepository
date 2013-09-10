@@ -40,6 +40,7 @@
     return YES;
 }
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
+     [UIApplication sharedApplication].applicationIconBadgeNumber = 12;
     // 处理推送消息
     UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"通知" message:@"我的信息" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil, nil];
     [alert show];
@@ -69,11 +70,12 @@
     tokeStr = [tokeStr stringByTrimmingCharactersInSet:set]; 
     tokeStr = [tokeStr stringByReplacingOccurrencesOfString:@" " withString:@""]; 
 //    NSString *strURL = @"http://192.168.1.103/push_chat_service.php";
-    NSString *strURL = @"http://www.nicelz.com/ljm/push.php?deviceToken=fd4a72f7ce3237dea41f1cea215ce0de9fbe249a475c0facf9adc8be1abdf07f&message=adf";
+    NSString *mess = @"欢迎进入系统";
+    NSString *strURL = [NSString stringWithFormat:@"http://www.nicelz.com/ljm/push.php?deviceToken=%@&message=%@",tokeStr,mess];//@"http://www.nicelz.com/ljm/push.php?deviceToken=fd4a72f7ce3237dea41f1cea215ce0de9fbe249a475c0facf9adc8be1abdf07f&message=welcome";
     NSURL *url = [NSURL URLWithString:strURL];
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
-    [request setPostValue:tokeStr forKey:@"token"];
-    [request setPostValue:@"S637AH2F36.shijin.shijin" forKey:@"appid" ];
+//    [request setPostValue:tokeStr forKey:@"token"];
+//    [request setPostValue:@"S637AH2F36.shijin.shijin" forKey:@"appid" ];
     [request setDelegate:self];
     NSLog(@"发送给服务器");
     __unsafe_unretained ASIHTTPRequest *trequest = request;

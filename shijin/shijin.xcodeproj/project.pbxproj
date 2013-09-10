@@ -70,6 +70,8 @@
 		1812899317AB939B00443C79 /* reservation_technical_support.png in Resources */ = {isa = PBXBuildFile; fileRef = 1812897617AB939B00443C79 /* reservation_technical_support.png */; };
 		1812899417AB939B00443C79 /* reservation_technical_support@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1812897717AB939B00443C79 /* reservation_technical_support@2x.png */; };
 		1812899717AB93DD00443C79 /* reservationList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1812899617AB93DD00443C79 /* reservationList.plist */; };
+		18270D5917DEEF1E00DE28EA /* clock_big_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 18270D5717DEEF1E00DE28EA /* clock_big_bg.png */; };
+		18270D5A17DEEF1E00DE28EA /* clock_big_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18270D5817DEEF1E00DE28EA /* clock_big_bg@2x.png */; };
 		1829C54217D482560046320D /* main_guide_one.png in Resources */ = {isa = PBXBuildFile; fileRef = 1829C53617D482560046320D /* main_guide_one.png */; };
 		1829C54317D482560046320D /* main_guide_one@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1829C53717D482560046320D /* main_guide_one@2x.png */; };
 		1829C54417D482560046320D /* main_guide_one5.png in Resources */ = {isa = PBXBuildFile; fileRef = 1829C53817D482560046320D /* main_guide_one5.png */; };
@@ -325,6 +327,8 @@
 		1812897617AB939B00443C79 /* reservation_technical_support.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reservation_technical_support.png; sourceTree = "<group>"; };
 		1812897717AB939B00443C79 /* reservation_technical_support@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reservation_technical_support@2x.png"; sourceTree = "<group>"; };
 		1812899617AB93DD00443C79 /* reservationList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = reservationList.plist; sourceTree = "<group>"; };
+		18270D5717DEEF1E00DE28EA /* clock_big_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock_big_bg.png; sourceTree = "<group>"; };
+		18270D5817DEEF1E00DE28EA /* clock_big_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock_big_bg@2x.png"; sourceTree = "<group>"; };
 		1829C53617D482560046320D /* main_guide_one.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main_guide_one.png; sourceTree = "<group>"; };
 		1829C53717D482560046320D /* main_guide_one@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_guide_one@2x.png"; sourceTree = "<group>"; };
 		1829C53817D482560046320D /* main_guide_one5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main_guide_one5.png; sourceTree = "<group>"; };
@@ -575,6 +579,8 @@
 		1810C91917DDB553003EA3F0 /* clock */ = {
 			isa = PBXGroup;
 			children = (
+				18270D5717DEEF1E00DE28EA /* clock_big_bg.png */,
+				18270D5817DEEF1E00DE28EA /* clock_big_bg@2x.png */,
 				1810C91A17DDB553003EA3F0 /* clock-bbg.png */,
 				1810C91B17DDB553003EA3F0 /* clock-bbg@2x.png */,
 				1810C91C17DDB553003EA3F0 /* clock-bg.png */,
@@ -1327,6 +1333,8 @@
 				1810C92717DDB554003EA3F0 /* clock-minu@2x.png in Resources */,
 				1810C92817DDB554003EA3F0 /* clock-secound.png in Resources */,
 				1810C92B17DDB9CB003EA3F0 /* clock-secound@2x.png in Resources */,
+				18270D5917DEEF1E00DE28EA /* clock_big_bg.png in Resources */,
+				18270D5A17DEEF1E00DE28EA /* clock_big_bg@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1457,8 +1465,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "9149CEDB-EF75-404A-9E79-86285356C0A7";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9149CEDB-EF75-404A-9E79-86285356C0A7";
+				PROVISIONING_PROFILE = "AFBA0547-07E9-4118-A426-ADAF21DB9FEB";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "AFBA0547-07E9-4118-A426-ADAF21DB9FEB";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1485,8 +1493,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "9149CEDB-EF75-404A-9E79-86285356C0A7";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9149CEDB-EF75-404A-9E79-86285356C0A7";
+				PROVISIONING_PROFILE = "AFBA0547-07E9-4118-A426-ADAF21DB9FEB";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "AFBA0547-07E9-4118-A426-ADAF21DB9FEB";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1509,8 +1517,8 @@
 				);
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "时金";
-				PROVISIONING_PROFILE = "9149CEDB-EF75-404A-9E79-86285356C0A7";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9149CEDB-EF75-404A-9E79-86285356C0A7";
+				PROVISIONING_PROFILE = "AFBA0547-07E9-4118-A426-ADAF21DB9FEB";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "AFBA0547-07E9-4118-A426-ADAF21DB9FEB";
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1532,8 +1540,8 @@
 				);
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "时金";
-				PROVISIONING_PROFILE = "9149CEDB-EF75-404A-9E79-86285356C0A7";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9149CEDB-EF75-404A-9E79-86285356C0A7";
+				PROVISIONING_PROFILE = "AFBA0547-07E9-4118-A426-ADAF21DB9FEB";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "AFBA0547-07E9-4118-A426-ADAF21DB9FEB";
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = app;
 			};

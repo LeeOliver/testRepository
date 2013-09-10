@@ -158,7 +158,7 @@
     _iUIViewIII.backgroundColor = [UIColor clearColor];
     _iUIViewIII.tag = KVIEWSHOWTHREE;
     UIView *mainbox = [[UIView alloc]init];
-    mainbox.backgroundColor = [UIColor clearColor];
+    mainbox.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"clock_big_bg.png"]];
     [_iUIViewIII addSubview:mainbox];
     mainbox.frame = CGRectMake(0, 110, _mainView.frame.size.width, _mainView.frame.size.height-110);
 
@@ -175,7 +175,7 @@
     UIColor *progressColor2 = [UIColor colorWithRed:120.0/255.0 green:180.0/255.0 blue:24.0/255.0 alpha:1.0];
     
     UIView *bs = [[UIView alloc]initWithFrame:CGRectMake(24, 15, 273, 275)];
-    bs.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"clock-bg.png"]];
+    bs.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"clock-bbg.png"]];
     [mainbox addSubview:bs];
     
     _progressCircularView = [[ClockView alloc] initWithFrame:CGRectMake(24, 15, 273, 275) backColor:[UIColor clearColor] secountBackColor:[UIColor clearColor] progressColor:progressColor2 appointmentColor:progressColor1 minuteColor:progressColor lineWidth:11 time:@"600" appointmentProgress:[NSString stringWithFormat:@"%d",[[_iData objectForKey:@"service_time"]intValue]]];
