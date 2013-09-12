@@ -42,57 +42,110 @@
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
      [UIApplication sharedApplication].applicationIconBadgeNumber = 12;
     // 处理推送消息
-    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"通知" message:@"我的信息" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil, nil];
-    [alert show];
     NSLog(@"%@", userInfo);
+    NSString *soundValue = [[userInfo objectForKey:@"aps"] objectForKey:@"sound"];
+    soundValue = [self parsSoundBaby:soundValue];
+//    switch ([soundValue intValue]) {
+//        case kCOLLECTION_NORMAL:
+//        {
+//            self.kUIflag = kCOLLECTIONUI_I;
+//            self.kSystemFlag = kCOLLECTION_NORMAL;
+//        }
+//            break;
+//        case kCOLLECTION_REQUEST:
+//        {
+//            self.kUIflag = kCOLLECTIONUI_II;
+//            self.kSystemFlag = kCOLLECTION_REQUEST;
+//        }
+//            break;
+//        case kCOLLECTION_START:
+//        {
+//            self.kUIflag = kCOLLECTIONUI_III;
+//            self.kSystemFlag = kCOLLECTION_START;
+//        }
+//
+//            break;
+//        case kCOLLECTION_END:
+//        {
+//            self.kUIflag = kCOLLECTIONUI_IV;
+//            self.kSystemFlag = kCOLLECTION_END;
+//        }
+//
+//            break;
+//        case kRESERVATION_SEND:
+//        {
+//            self.kUIflag = kRESERVATIONUI_I;
+//            self.kSystemFlag = kRESERVATION_SEND;
+//        }
+//
+//            break;
+//        case kRESERVATION_UPDATA:
+//        {
+//            self.kUIflag = kRESERVATIONUI_II;
+//            self.kSystemFlag = kRESERVATION_SEND;
+//        }
+//
+//            break;
+//        case kRESERVATION_START:
+//        {
+//            self.kUIflag = kRESERVATIONUI_III;
+//            self.kSystemFlag = kRESERVATION_START;
+//        }
+//
+//            break;
+//        case kRESERVATION_END:
+//        {
+//            self.kUIflag = kRESERVATIONUI_IV;
+//            self.kSystemFlag = kRESERVATION_END;
+//        }
+//
+//            break;
+//        default:
+//            break;
+//    }
     //以警告框的方式来显示推送消息
-    if ([[userInfo objectForKey:@"aps"] objectForKey:@"alert"]!=NULL) {
-        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"经过推送发送过来的消息"
-                                                        message:[[userInfo objectForKey:@"aps"] objectForKey:@"alert"]
-                                                       delegate:self
-                                              cancelButtonTitle:@"关闭"
-                                              otherButtonTitles:@"处理",nil];
-        [alert show];
-    }
+//    if ([[userInfo objectForKey:@"aps"] objectForKey:@"alert"]!=NULL && (!soundValue || [soundValue isKindOfClass:[NSNull class]])) {
+//        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"经过推送发送过来的消息"
+//                                                        message:[[userInfo objectForKey:@"aps"] objectForKey:@"alert"]
+//                                                       delegate:self
+//                                              cancelButtonTitle:@"关闭"
+//                                              otherButtonTitles:@"处理",nil];
+//        [alert show];
+//    }
 }
 
+- (NSString *)pushBody:(int)systemFlag
+{
+    NSString *returnStr = [NSString stringWithFormat:@"systemFlag:%d",systemFlag];
+    return returnStr;
+}
+- (NSString*)parsSoundBaby:(NSString*)sBaby
+{
+    NSString *strKey = @"systemFlag:";
+    NSRange range = [sBaby rangeOfString:strKey];
+    int location = range.location;
+    int length = range.length;
+    NSString *returnStr;
+    if (length>0) {
+        returnStr = [sBaby substringFromIndex:location+length];
+    }
+    return returnStr;
+}
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
     NSLog(@"设备令牌: %@", deviceToken);
 
     NSString *tokeStr = [NSString stringWithFormat:@"%@",deviceToken];
-
+    
     if ([tokeStr length] == 0) {
         return;
     }
 
     NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:@"<>"];
     tokeStr = [tokeStr stringByTrimmingCharactersInSet:set]; 
-    tokeStr = [tokeStr stringByReplacingOccurrencesOfString:@" " withString:@""]; 
-//    NSString *strURL = @"http://192.168.1.103/push_chat_service.php";
-    NSString *mess = @"欢迎进入系统";
-    NSString *strURL = [NSString stringWithFormat:@"http://www.nicelz.com/ljm/push.php?deviceToken=%@&message=%@",tokeStr,mess];//@"http://www.nicelz.com/ljm/push.php?deviceToken=fd4a72f7ce3237dea41f1cea215ce0de9fbe249a475c0facf9adc8be1abdf07f&message=welcome";
-    NSURL *url = [NSURL URLWithString:strURL];
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
-//    [request setPostValue:tokeStr forKey:@"token"];
-//    [request setPostValue:@"S637AH2F36.shijin.shijin" forKey:@"appid" ];
-    [request setDelegate:self];
-    NSLog(@"发送给服务器");
-    __unsafe_unretained ASIHTTPRequest *trequest = request;
-    [trequest setCompletionBlock:^{
-     __block NSDictionary *returnData = [[request responseData] objectFromJSONData];
-        NSLog(@"returnData = %@",returnData);
-
-    }];
-    
-    [trequest setFailedBlock:^{
-//       DDLogError(@"WebAPI Error request:%@ response:%@",request.url, request.responseString);
-        
-        __block NSDictionary *returnData = [[request responseData] objectFromJSONData];
-        NSLog(@"returnData = %@",returnData);
-    }];
-
-    [request startAsynchronous];  
+    tokeStr = [tokeStr stringByReplacingOccurrencesOfString:@" " withString:@""];
+    _token = tokeStr;
+    [[SJPushEngine shareInstance] pushWithAlert:@"欢迎使用时金系统1" andOtherTokenStr:tokeStr andBody:@""];
 }
 - (void)addRegisterForRemoteNotification:(UIApplication *)application
 {
@@ -100,7 +153,6 @@
 
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
      (UIRemoteNotificationTypeBadge |
-      UIRemoteNotificationTypeSound |
       UIRemoteNotificationTypeAlert)];
 
     //设置图标标记
@@ -296,6 +348,8 @@ didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
+    NSLog(@"123");
+    [[NetWorkEngine shareInstance]phoneOutByUserId:[NetWorkEngine shareInstance].personID];
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
@@ -313,6 +367,9 @@ didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
             [NetWorkEngine shareInstance].isPayment = [[dic objectForKey:ISPAYMANT] boolValue];
             [NetWorkEngine shareInstance].nikename = [dic objectForKey:NIKENAME];
             [NetWorkEngine shareInstance].userID = [dic objectForKey:USERID];
+            if ([dic objectForKey:TOKEN] && ![[dic objectForKey:TOKEN]isKindOfClass:[NSNull class]]) {
+                [SJPushEngine shareInstance].tokenStr = [dic objectForKey:TOKEN];
+            }
             [NetWorkEngine shareInstance].isFlag = YES;
             return YES;
         }
@@ -332,9 +389,15 @@ didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
         }else{
             sName = @"";
         }
-
     }
-    NSDictionary *dic = @{PERSONID: sEmail, PASSWORD: sPassword, ISPAYMANT: npayment, NIKENAME: sName, USERID: [NetWorkEngine shareInstance].userID};
+    NSDictionary *dic;
+    if (_token){
+        dic = @{PERSONID: sEmail, PASSWORD: sPassword, ISPAYMANT: npayment, NIKENAME: sName, USERID: [NetWorkEngine shareInstance].userID,TOKEN:_token};
+        [SJPushEngine shareInstance].tokenStr = _token;
+    }
+    else{
+        dic = @{PERSONID: sEmail, PASSWORD: sPassword, ISPAYMANT: npayment, NIKENAME: sName, USERID: [NetWorkEngine shareInstance].userID};
+    }
     [dic writeToFile:USER_PATH atomically:NO];
 }
 
@@ -517,6 +580,21 @@ BOOL DeleteSingleFile(NSString *filePath){
     UIImage *bubble = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"cell_background" ofType:@"png"]];
     UIImageView *bubbleImageView = [[UIImageView alloc] initWithImage:[bubble stretchableImageWithLeftCapWidth:9 topCapHeight:9]];
     return bubbleImageView;
+}
+
+- (void)enterReservation:(UINavigationController*)navigationC andData:(NSDictionary*)aData andUIFlag:(int)updateReservationUIFlag
+{
+    [AppDelegate App].kUIflag = updateReservationUIFlag;
+    SJReservationVC *next = [[SJReservationVC alloc]init];
+    next.dataDic = aData;
+    [navigationC pushViewController:next animated:YES];
+}
+- (void)enterCollection:(UINavigationController*)navigationC andData:(NSDictionary*)aData andUIFlag:(int)updateReservationUIFlag
+{
+    [AppDelegate App].kUIflag = updateReservationUIFlag;
+    SJCollectionVC *next = [[SJCollectionVC alloc]init];
+    [next setDataSource:aData];
+    [navigationC pushViewController:next animated:YES];
 }
 
 @end

@@ -398,6 +398,8 @@
 
 - (void)acceptAction
 {
+    NSString *message = [NSString stringWithFormat:@"%@接受了您的请求",[NetWorkEngine shareInstance].nikename];
+    [self pushMessage:message andState:kCOLLECTION_REQUEST];
     //收款人请求按钮
     [[NetWorkEngine shareInstance]sendreceiveRequestByResponserId:[NetWorkEngine shareInstance].userID andRequesterId:[_iData objectForKey:@"requester_id"] andServiceTime:[_iData objectForKey:@"service_time"] delegate:self sel:@selector(acceptReturn:)];
 }
@@ -504,6 +506,9 @@
 }
 - (void)stopAction
 {
+    NSString *message = [NSString stringWithFormat:@"%@拒绝了您的请求",[NetWorkEngine shareInstance].nikename];
+    [self pushMessage:message andState:kCOLLECTION_STOP];
+
     [self stopRequest];
 }
 - (void)stopRequest
@@ -517,6 +522,25 @@
         [AppDelegate App].kUIflag = kCOLLECTIONUI_I;
         [self updateViewUI];
     }
+}
+- (void)pushMessage:(NSString*)message andState:(int)state
+{
+    if ([[_iData objectForKey:@"is_phone"]isEqualToString:@"Y"]&&
+        [_iData objectForKey:@"shebei"]&&
+        ![[_iData objectForKey:@"shebei"]isKindOfClass:[NSNull class]]&&
+        [[_iData objectForKey:@"shebei"]length]>0&&
+        [[_iData objectForKey:@"is_online"]isEqualToString:@"N"]) {
+        [[SJPushEngine shareInstance]pushWithAlert:message andOtherTokenStr:[_iData objectForKey:@"shebei"] andBody:[[AppDelegate App] pushBody:state]];
+    }
+    else if([[_iData objectForKey:@"is_phone"]isEqualToString:@"Y"]&&
+            [_iData objectForKey:@"shebei"]&&
+            ![[_iData objectForKey:@"shebei"]isKindOfClass:[NSNull class]]&&
+            [[_iData objectForKey:@"shebei"]length]>0&&
+            [[_iData objectForKey:@"is_online"]isEqualToString:@"Y"]){
+        [[SJPushEngine shareInstance]pushWithAlert:message andOtherTokenStr:[_iData objectForKey:@"shebei"] andBody:[[AppDelegate App] pushBody:state]];
+        
+    }
+    
 }
 
 @end

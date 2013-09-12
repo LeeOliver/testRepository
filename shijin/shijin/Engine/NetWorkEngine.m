@@ -52,6 +52,7 @@ static NetWorkEngine * sharedNetWorkEngine = NULL;
         *error = [retDic objectForKey:MSG];
         if ([[retDic objectForKey:MSG]isEqualToString:@"OK"])
         {
+            //成功
             _userID = [[retDic objectForKey:RETURNDATA]objectForKey:@"user_id"];
             _nikename = [[retDic objectForKey:RETURNDATA]objectForKey:@"nickName"];
             return 1;
@@ -1126,6 +1127,8 @@ static NetWorkEngine * sharedNetWorkEngine = NULL;
 {
     NSMutableDictionary *getParams = [[NSMutableDictionary alloc]init];
     [getParams assemblyValue:sUserId key:@"userid" optional:NO];
+    [getParams assemblyValue:[SJPushEngine shareInstance].tokenStr key:@"token" optional:NO];
+
     //成功回調
     void (^reciveInviteUser)(ASIHTTPRequest * request);
     reciveInviteUser = ^(ASIHTTPRequest * request) {
@@ -1144,6 +1147,35 @@ static NetWorkEngine * sharedNetWorkEngine = NULL;
 
 
 }
+/**
+ *	@brief	退出程序
+ *
+ *	@param 	sUserId 	自己的id
+ */
+- (void)phoneOutByUserId:(NSString *)sUserId
+{
+    NSMutableDictionary *getParams = [[NSMutableDictionary alloc]init];
+    [getParams assemblyValue:sUserId key:@"userid" optional:NO];
+    
+    //成功回調
+    void (^reciveInviteUser)(ASIHTTPRequest * request);
+    reciveInviteUser = ^(ASIHTTPRequest * request) {
+        DLog(@"receive phoneOutByUserId return");
+    };
+    //失敗回調
+    void (^reciveInviteUserFail)(ASIHTTPRequest * request);
+    reciveInviteUserFail = ^(ASIHTTPRequest * request) {
+        DLog(@"receive phoneOutByUserId return");
+    };
+    [[SJNetworkService shareInstance] asynRequestWithMethodName:@"PhoneOut"
+                                                   andGetParams:getParams
+                                                  andPostParams:nil
+                                                   andSuccBlock:reciveInviteUser
+                                                   andFailBlock:reciveInviteUserFail];
+    
+    
+}
+
 /**
  *	@brief	更新个人资料
  *
@@ -1355,5 +1387,227 @@ static NetWorkEngine * sharedNetWorkEngine = NULL;
                                                    andSuccBlock:reciveInviteUser
                                                    andFailBlock:reciveInviteUserFail];
 }
+/**
+ *	@brief	收款人管理-获取自己的服务
+ *
+ *	@param 	sUserId 	自己id
+ */
+- (void)getMyServiceListByUserId:(NSString *)sUserId
+                        delegate:(id) aDelegate
+                             sel:(SEL) aSel
+{
+    {
+        NSMutableDictionary *getParams = [[NSMutableDictionary alloc]init];
+        [getParams assemblyValue:sUserId key:@"user_id" optional:NO];
+        
+        //成功回調
+        void (^reciveInviteUser)(ASIHTTPRequest * request);
+        reciveInviteUser = ^(ASIHTTPRequest * request) {
+            DLog(@"receive GetMyServiceList return");
+            __block NSDictionary *returnData = [[request responseData] objectFromJSONData];
+            if (returnData)
+            {
+                if (aDelegate &&
+                    [aDelegate respondsToSelector:aSel])
+                {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+                    
+                    [aDelegate performSelector:aSel
+                                    withObject:returnData];
+#pragma clang diagnostic pop
+                    
+                }
+            }
+            else {
+                if (aDelegate &&
+                    [aDelegate respondsToSelector:aSel])
+                {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+                    
+                    [aDelegate performSelector:aSel
+                                    withObject:nil];
+#pragma clang diagnostic pop
+                    
+                }
+            }
+        };
+        //失敗回調
+        void (^reciveInviteUserFail)(ASIHTTPRequest * request);
+        reciveInviteUserFail = ^(ASIHTTPRequest * request) {
+            DLog(@"receive GetMyServiceList return");
+            if (aDelegate &&
+                [aDelegate respondsToSelector:aSel])
+            {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+                
+                [aDelegate performSelector:aSel
+                                withObject:nil];
+#pragma clang diagnostic pop
+                
+            }
+        };
+        [[SJNetworkService shareInstance] asynRequestWithMethodName:@"GetMyServiceList"
+                                                       andGetParams:getParams
+                                                      andPostParams:nil
+                                                       andSuccBlock:reciveInviteUser
+                                                       andFailBlock:reciveInviteUserFail];
+    }
 
+}
+
+/**
+ *	@brief	收款人管理-删除自己的服务
+ *
+ *	@param 	sComId 	服务id
+ */
+- (void)deleteMyServiceByComId:(NSString *)sComId
+                      delegate:(id) aDelegate
+                           sel:(SEL) aSel
+{
+    {
+        NSMutableDictionary *getParams = [[NSMutableDictionary alloc]init];
+        [getParams assemblyValue:sComId key:@"com_id" optional:NO];
+        
+        //成功回調
+        void (^reciveInviteUser)(ASIHTTPRequest * request);
+        reciveInviteUser = ^(ASIHTTPRequest * request) {
+            DLog(@"receive GetMyServiceList return");
+            __block NSDictionary *returnData = [[request responseData] objectFromJSONData];
+            if (returnData)
+            {
+                if (aDelegate &&
+                    [aDelegate respondsToSelector:aSel])
+                {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+                    
+                    [aDelegate performSelector:aSel
+                                    withObject:returnData];
+#pragma clang diagnostic pop
+                    
+                }
+            }
+            else {
+                if (aDelegate &&
+                    [aDelegate respondsToSelector:aSel])
+                {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+                    
+                    [aDelegate performSelector:aSel
+                                    withObject:nil];
+#pragma clang diagnostic pop
+                    
+                }
+            }
+        };
+        //失敗回調
+        void (^reciveInviteUserFail)(ASIHTTPRequest * request);
+        reciveInviteUserFail = ^(ASIHTTPRequest * request) {
+            DLog(@"receive GetMyServiceList return");
+            if (aDelegate &&
+                [aDelegate respondsToSelector:aSel])
+            {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+                
+                [aDelegate performSelector:aSel
+                                withObject:nil];
+#pragma clang diagnostic pop
+                
+            }
+        };
+        [[SJNetworkService shareInstance] asynRequestWithMethodName:@"DeleteMyService"
+                                                       andGetParams:getParams
+                                                      andPostParams:nil
+                                                       andSuccBlock:reciveInviteUser
+                                                       andFailBlock:reciveInviteUserFail];
+    }
+    
+}
+/**
+ *	@brief	收款人管理-添加 修改自己服务
+ *
+ *	@param 	sUserId 	自己id，uid
+ *	@param 	sComId 	更新填写，服务id，不填写添加服务
+ *	@param 	sViewName 	服务类型1-32
+ *	@param 	sName 	商品名字
+ *	@param 	sCate 	费率
+ */
+- (void)addOrUpdateMyServiceByUserId:(NSString*)sUserId
+                            andComId:(NSString*)sComId
+                         andViewName:(NSString*)sViewName
+                             andName:(NSString*)sName
+                             andCate:(NSString*)sCate
+                            delegate:(id) aDelegate
+                                 sel:(SEL) aSel
+{
+    {
+        NSMutableDictionary *getParams = [[NSMutableDictionary alloc]init];
+        [getParams assemblyValue:sComId key:@"com_id" optional:YES];
+        [getParams assemblyValue:sComId key:@"userid" optional:NO];
+        NSMutableDictionary *postParams = [[NSMutableDictionary alloc]init];
+        [getParams assemblyValue:sComId key:@"view_name" optional:NO];
+        [getParams assemblyValue:sComId key:@"name" optional:NO];
+        [getParams assemblyValue:sComId key:@"cate" optional:NO];
+        //成功回調
+        void (^reciveInviteUser)(ASIHTTPRequest * request);
+        reciveInviteUser = ^(ASIHTTPRequest * request) {
+            DLog(@"receive AddOrUpdateMyService return");
+            __block NSDictionary *returnData = [[request responseData] objectFromJSONData];
+            if (returnData)
+            {
+                if (aDelegate &&
+                    [aDelegate respondsToSelector:aSel])
+                {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+                    
+                    [aDelegate performSelector:aSel
+                                    withObject:returnData];
+#pragma clang diagnostic pop
+                    
+                }
+            }
+            else {
+                if (aDelegate &&
+                    [aDelegate respondsToSelector:aSel])
+                {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+                    
+                    [aDelegate performSelector:aSel
+                                    withObject:nil];
+#pragma clang diagnostic pop
+                    
+                }
+            }
+        };
+        //失敗回調
+        void (^reciveInviteUserFail)(ASIHTTPRequest * request);
+        reciveInviteUserFail = ^(ASIHTTPRequest * request) {
+            DLog(@"receive AddOrUpdateMyService return");
+            if (aDelegate &&
+                [aDelegate respondsToSelector:aSel])
+            {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+                
+                [aDelegate performSelector:aSel
+                                withObject:nil];
+#pragma clang diagnostic pop
+                
+            }
+        };
+        [[SJNetworkService shareInstance] asynRequestWithMethodName:@"AddOrUpdateMyService"
+                                                       andGetParams:getParams
+                                                      andPostParams:postParams
+                                                       andSuccBlock:reciveInviteUser
+                                                       andFailBlock:reciveInviteUserFail];
+    }
+    
+}
 @end

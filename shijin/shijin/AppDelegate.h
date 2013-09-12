@@ -22,7 +22,7 @@
     int                             mTime;//时间
     int                             stopTime;//计时上限
     NSString                        *_circularCountTime;//计时器计时
-    
+    NSString *_token;
 }
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) RXCustomTabBar                *tabBarController;///根控制器
@@ -70,5 +70,11 @@
 /** 壓縮到指定的尺寸，完全填充不會有空白 */
 + (UIImage *) clipImage: (UIImage *)image clipSize:(CGSize)clipSize;
 + (UIImageView*)fullCellBackground;
+///进入预约界面
+- (void)enterReservation:(UINavigationController*)navigationC andData:(NSDictionary*)aData andUIFlag:(int)updateReservationUIFlag;
+- (void)enterCollection:(UINavigationController*)navigationC andData:(NSDictionary*)aData andUIFlag:(int)updateReservationUIFlag;
+
+//不显示通知字符串
+- (NSString *)pushBody:(int)systemFlag;
 
 @end

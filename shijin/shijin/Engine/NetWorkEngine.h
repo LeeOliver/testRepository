@@ -213,6 +213,12 @@
  *	@param 	sUserId 	自己的id
  */
 - (void)addLastLoginTimeByUserId:(NSString *)sUserId;
+/**
+ *	@brief	退出程序
+ *
+ *	@param 	sUserId 	自己的id
+ */
+- (void)phoneOutByUserId:(NSString *)sUserId;
 
 /**
  *	@brief	更新个人资料
@@ -245,5 +251,40 @@
 - (void)getUserInfoByUserId:(NSString *)sUserId
                    delegate:(id) aDelegate
                         sel:(SEL) aSel;
+
+/**
+ *	@brief	收款人管理-获取自己的服务
+ *
+ *	@param 	sUserId 	自己id
+ */
+- (void)getMyServiceListByUserId:(NSString *)sUserId
+                        delegate:(id) aDelegate
+                             sel:(SEL) aSel;
+
+/**
+ *	@brief	收款人管理-删除自己的服务
+ *
+ *	@param 	sComId 	服务id
+ */
+- (void)deleteMyServiceByComId:(NSString *)sComId
+                      delegate:(id) aDelegate
+                           sel:(SEL) aSel;
+
+/**
+ *	@brief	收款人管理-添加 修改自己服务
+ *
+ *	@param 	sUserId 	自己id，uid
+ *	@param 	sComId 	更新填写，服务id，不填写添加服务
+ *	@param 	sViewName 	服务类型1-32
+ *	@param 	sName 	商品名字
+ *	@param 	sCate 	费率
+ */
+- (void)addOrUpdateMyServiceByUserId:(NSString*)sUserId
+                            andComId:(NSString*)sComId
+                         andViewName:(NSString*)sViewName
+                             andName:(NSString*)sName
+                             andCate:(NSString*)sCate
+                            delegate:(id) aDelegate
+                                 sel:(SEL) aSel;
 
 @end

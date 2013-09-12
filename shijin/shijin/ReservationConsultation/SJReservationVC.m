@@ -671,7 +671,10 @@
     if ([_hours.text intValue]>0) {
         _selectM += [_hours.text intValue] * 60;
     }
+    
     if (_selectM > 0) {
+        NSString *name = [NSString stringWithFormat:@"%@向您发送了预约请求",[NetWorkEngine shareInstance].nikename];
+        [self pushMessage:name andState:kRESERVATION_SEND];
         [[NetWorkEngine shareInstance]creatTempMeetingRequestByRequesterId:[NetWorkEngine shareInstance].userID andResponserId:[_dataDic objectForKey:@"id"] andRate:[_dataDic objectForKey:@"com_rate"] andServicetime:[NSString stringWithFormat:@"%d",_selectM] andSum:_fund delegate:self sel:@selector(sendTempMeetingReturn:)];
     }
     else{
@@ -712,6 +715,9 @@
 }
 - (void)stopRequest
 {
+    NSString *name = [NSString stringWithFormat:@"%@取消了预约请求",[NetWorkEngine shareInstance].nikename];
+    [self pushMessage:name andState:kRESERVATION_STOP];
+
     [[SJTimeEngine shareInstance]stopTimer];
     [[NetWorkEngine shareInstance]stopRequestByResponserId:[_dataDic objectForKey:@"id"] andRequesterId:[NetWorkEngine shareInstance].userID delegate:self sel:@selector(stopRequestReturn:)];
 }
@@ -726,6 +732,9 @@
 
 - (void)meetingStart
 {
+    NSString *name = [NSString stringWithFormat:@"%@与您预约开始计时",[NetWorkEngine shareInstance].nikename];
+    [self pushMessage:name andState:kRESERVATION_START];
+
     [[NetWorkEngine shareInstance]meetingStartByResponserId:[_dataDic objectForKey:@"id"] andRequesterId:[NetWorkEngine shareInstance].userID andMeetingStart:@"Y" delegate:self sel:@selector(meetingStartReturn:)];
 }
 - (void)meetingStartReturn:(NSDictionary *)iDataArr
@@ -755,6 +764,9 @@
 
 - (void)meetingEnd
 {
+    NSString *name = [NSString stringWithFormat:@"%@结束与您的计时",[NetWorkEngine shareInstance].nikename];
+    [self pushMessage:name andState:kRESERVATION_END];
+
     [[SJTimeEngine shareInstance]stopTimer];
     [[NetWorkEngine shareInstance]meetingEndByResponserId:[_dataDic objectForKey:@"id"] andRequesterId:[NetWorkEngine shareInstance].userID andMeetingStart:@"S" delegate:self sel:@selector(meetingEndReturn:)];
 }
@@ -784,4 +796,23 @@
     [_backBtn addTarget:self action:@selector(stopRequest) forControlEvents:UIControlEventTouchUpInside];
 }
 
+- (void)pushMessage:(NSString*)message andState:(int)state
+{
+    if ([[_dataDic objectForKey:@"is_phone"]isEqualToString:@"Y"]&&
+        [_dataDic objectForKey:@"shebei"]&&
+        ![[_dataDic objectForKey:@"shebei"]isKindOfClass:[NSNull class]]&&
+        [[_dataDic objectForKey:@"shebei"]length]>0&&
+        [[_dataDic objectForKey:@"is_online"]isEqualToString:@"N"]) {
+        [[SJPushEngine shareInstance]pushWithAlert:message andOtherTokenStr:[_dataDic objectForKey:@"shebei"] andBody:[[AppDelegate App] pushBody:state]];
+    }
+    else if([[_dataDic objectForKey:@"is_phone"]isEqualToString:@"Y"]&&
+            [_dataDic objectForKey:@"shebei"]&&
+            ![[_dataDic objectForKey:@"shebei"]isKindOfClass:[NSNull class]]&&
+            [[_dataDic objectForKey:@"shebei"]length]>0&&
+            [[_dataDic objectForKey:@"is_online"]isEqualToString:@"Y"]){
+        [[SJPushEngine shareInstance]pushWithAlert:message andOtherTokenStr:[_dataDic objectForKey:@"shebei"] andBody:[[AppDelegate App] pushBody:state]];
+        
+    }
+
+}
 @end

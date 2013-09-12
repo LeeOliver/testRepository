@@ -9,6 +9,8 @@
 #import "SJPersonalCenterVC.h"
 #import "LEffectLabel.h"
 #import "SJAlipayVC.h"
+#import "SJMutableListVC.h"
+#import "SJMutableCollectionListVC.h"
 @interface SJPersonalCenterVC ()
 
 @end
@@ -93,7 +95,7 @@
 #pragma mark - Table View DataSource Delegate
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return 5;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -107,6 +109,12 @@
             return 1;
             break;
         case 2:
+            return 1;
+            break;
+        case 3:
+            return 2;
+            break;
+        case 4:
             return 1;
             break;
     }
@@ -159,8 +167,7 @@
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.userInteractionEnabled = YES;
     }
-    else{
-        tLabel.text = @"";
+    else if([indexPath section]==2){
         tLabel.hidden = NO;
         tLabel.text = @"用户充值";
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -168,6 +175,35 @@
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.userInteractionEnabled = YES;
 
+    }
+    else if([indexPath section]==3){
+        switch ([indexPath row]){
+            case 0:
+                tLabel.hidden = NO;
+                tLabel.text = @"付款人列表";
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                cell.userInteractionEnabled = YES;
+                break;
+            case 1:
+                tLabel.hidden = NO;
+                tLabel.text = @"收款人列表";
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                cell.userInteractionEnabled = YES;
+                break;
+        }
+    }
+    else if ([indexPath section]==4)
+    {
+        tLabel.hidden = NO;
+        tLabel.text = @"服务类别管理";
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.userInteractionEnabled = YES;
     }
     
     //    cell.textLabel.text = ((Chapter *)[self.iDataArray objectAtIndex:[indexPath row]]).title;
@@ -239,7 +275,7 @@
 //        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 //        cell.userInteractionEnabled = YES;
     }
-    else{
+    else if ([indexPath section]==2){
 //        tLabel.text = @"";
 //        tLabel.hidden = NO;
 //        tLabel.text = @"用户充值";
@@ -248,6 +284,27 @@
         SJAlipayVC *next = [[SJAlipayVC alloc]init];
         [self.navigationController pushViewController:next animated:YES];
         
+    }
+    else if ([indexPath section]==3){
+        switch ([indexPath row]){
+            case 0:
+            {
+                SJMutableListVC *next = [[SJMutableListVC alloc]init];
+                [self.navigationController pushViewController:next animated:YES];
+            }
+                break;
+            case 1:
+            {
+                SJMutableCollectionListVC *next = [[SJMutableCollectionListVC alloc]init];
+                [self.navigationController pushViewController:next animated:YES];
+
+            }
+                break;
+        }
+    }
+    else if([indexPath section]==4){
+        SJMyServiceListVC *next = [[SJMyServiceListVC alloc]init];
+        [self.navigationController pushViewController:next animated:YES];
     }
 }
 

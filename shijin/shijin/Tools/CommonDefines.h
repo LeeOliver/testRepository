@@ -27,6 +27,7 @@
 #define NIKENAME        @"view_name"
 #define ISPAYMANT       @"ispayment"
 #define USERID          @"user_id"
+#define TOKEN           @"token"
 /**
  网络请求回传参数
  */
@@ -72,9 +73,11 @@ enum systemFlag{
     kCOLLECTION_REQUEST,
     kCOLLECTION_START,
     kCOLLECTION_END,
+    kCOLLECTION_STOP,
     kRESERVATION_SEND,
     kRESERVATION_UPDATA,
     kRESERVATION_START,
     kRESERVATION_END,
+    kRESERVATION_STOP
 };
 #endif

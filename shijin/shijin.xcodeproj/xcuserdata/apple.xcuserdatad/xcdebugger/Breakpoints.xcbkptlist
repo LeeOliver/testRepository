@@ -164,35 +164,22 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shijin/ReservationConsultation/SJReservationVC.m"
-         timestampString = "400408173.091655"
+         timestampString = "400683152.628719"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "816"
-         endingLineNumber = "816">
+         startingLineNumber = "847"
+         endingLineNumber = "847">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shijin/ReservationConsultation/SJReservationVC.m"
-         timestampString = "400408173.091655"
+         timestampString = "400683152.628719"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "822"
-         endingLineNumber = "822">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "shijin/AppDelegate.m"
-         timestampString = "400496973.222794"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "337"
-         endingLineNumber = "337"
-         landmarkName = "-saveUserInfoByEmail:andPassword:andPayment:andName:"
-         landmarkType = "5">
+         startingLineNumber = "853"
+         endingLineNumber = "853">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
@@ -238,11 +225,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shijin/AppDelegate.m"
-         timestampString = "400496973.222794"
+         timestampString = "400683152.628719"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "275"
-         endingLineNumber = "275"
+         startingLineNumber = "327"
+         endingLineNumber = "327"
          landmarkName = "-applicationWillEnterForeground:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -251,11 +238,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shijin/ReservationConsultation/SJCollectionVC.m"
-         timestampString = "400408173.091655"
+         timestampString = "400683152.628719"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "402"
-         endingLineNumber = "402"
+         startingLineNumber = "404"
+         endingLineNumber = "404"
          landmarkName = "-acceptAction"
          landmarkType = "5">
       </FileBreakpoint>
@@ -264,11 +251,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shijin/ReservationConsultation/SJCollectionVC.m"
-         timestampString = "400408173.091655"
+         timestampString = "400683152.628719"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "450"
-         endingLineNumber = "450"
+         startingLineNumber = "452"
+         endingLineNumber = "452"
          landmarkName = "-setViewIVLabel:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -277,11 +264,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shijin/ReservationConsultation/SJReservationVC.m"
-         timestampString = "400408173.091655"
+         timestampString = "400683152.628719"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "759"
-         endingLineNumber = "759"
+         startingLineNumber = "771"
+         endingLineNumber = "771"
          landmarkName = "-meetingEnd"
          landmarkType = "5">
       </FileBreakpoint>
@@ -290,11 +277,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shijin/ReservationConsultation/SJCollectionVC.m"
-         timestampString = "400408173.091655"
+         timestampString = "400683152.628719"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "502"
-         endingLineNumber = "502"
+         startingLineNumber = "504"
+         endingLineNumber = "504"
          landmarkName = "-backAction"
          landmarkType = "5">
       </FileBreakpoint>
@@ -303,11 +290,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shijin/ReservationConsultation/SJCollectionVC.m"
-         timestampString = "400408173.091655"
+         timestampString = "400683152.628719"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "507"
-         endingLineNumber = "507"
+         startingLineNumber = "512"
+         endingLineNumber = "512"
          landmarkName = "-stopAction"
          landmarkType = "5">
       </FileBreakpoint>
@@ -315,13 +302,39 @@
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "shijin/AppDelegate.m"
-         timestampString = "400470999.729438"
+         filePath = "shijin/ReservationConsultation/SJReservationVCViewController.m"
+         timestampString = "400679254.169679"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "45"
-         endingLineNumber = "45"
+         startingLineNumber = "172"
+         endingLineNumber = "172"
+         landmarkName = "-returnData:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "shijin/AppDelegate.m"
+         timestampString = "400683241.559922"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "47"
+         endingLineNumber = "47"
          landmarkName = "-application:didReceiveRemoteNotification:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "shijin/ReservationConsultation/SJReservationVC.m"
+         timestampString = "400683337.902347"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "675"
+         endingLineNumber = "675"
+         landmarkName = "-sendTempMeeting"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
