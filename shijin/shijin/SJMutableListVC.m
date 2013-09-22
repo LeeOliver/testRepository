@@ -29,6 +29,15 @@
     [self initUI];
 	// Do any additional setup after loading the view.
 }
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [[NetWorkEngine shareInstance] getRequestByRequestId:nil orResponseId:[NetWorkEngine shareInstance].userID ddelegate:self sel:@selector(updateUI:)];
+    MBProgressHUD *HUD = [MBProgressHUD showHUDAddedTo:self.navigationController.view
+                                              animated:YES];
+    HUD.labelText = @"正在加載";
+
+}
 - (void)initUI
 {
     UIView *topView = [[AppDelegate App]creatNavigationView];
@@ -60,18 +69,27 @@
     
     self.view.backgroundColor = [UIColor colorWithRed:212/255.0f green:212/255.0f blue:212/255.0f alpha:1.0f];
 
+//    [self updateScrollView];
+}
+- (void)updateUI:(NSArray*)iData
+{
+    _dataArr = iData;
     [self updateScrollView];
+    [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
 }
 - (void)updateScrollView
 {
     int hang;
 
-    for (int i=0; i<21; i++) {
+    for (int i=0; i<[_dataArr count]; i++) {
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
 //        [btn setBackgroundImage:[UIImage imageNamed:[dic objectForKey:[[_dataArr objectAtIndex:i]objectForKey:@"cid"]]] forState:UIControlStateNormal];
-        [btn setTitle:[NSString stringWithFormat:@"%d",i] forState:UIControlStateNormal];
         [btn setBackgroundColor:[UIColor colorWithRed:103.0f/255.0f green:191.0f/255.0f blue:212.0f/255.0f alpha:1.0f]];
-        btn.tag = [[[_dataArr objectAtIndex:i]objectForKey:@"cid"]intValue];
+        btn.tag = [[[[_dataArr objectAtIndex:i]allKeys] objectAtIndex:0]intValue];
+        NSString *btnTitle = [[[_dataArr objectAtIndex:i]objectForKey:[NSString stringWithFormat:@"%d",btn.tag]]objectForKey:@"name"];
+        [btn setTitle:btnTitle forState:UIControlStateNormal];
+        NSString *btnTitle1 = [[[_dataArr objectAtIndex:i]objectForKey:[NSString stringWithFormat:@"%d",btn.tag]]objectForKey:@"status"];
+        NSLog(@"%@",btnTitle1);
         hang = i / 3;
 
         btn.layer.cornerRadius = 96/2;
@@ -93,12 +111,16 @@
 }
 - (void)enterBtnAction:(id)sender
 {
-//    UIButton *btn = (UIButton*)sender;
-
+    UIButton *btn = (UIButton*)sender;
+    NSString *userid = [NSString stringWithFormat:@"%d",btn.tag];
+    [[NetWorkEngine shareInstance]getUserInfoByUserId:userid delegate:self sel:@selector(enterVC:)];
     MBProgressHUD *HUD = [MBProgressHUD showHUDAddedTo:self.navigationController.view
                                               animated:YES];
     HUD.labelText = @"正在加載";
-    [HUD hide:YES afterDelay:3];
+
+}
+- (void)enterVC:(NSDictionary*)iReturn
+{
     switch ([AppDelegate App].kUIflag) {
         case kRESERVATIONUI_I:
         case kRESERVATIONUI_II:
@@ -120,7 +142,7 @@
         default:
             break;
     }
-
+    [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
 }
 - (void)didReceiveMemoryWarning
 {

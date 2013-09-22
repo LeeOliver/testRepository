@@ -1143,7 +1143,7 @@ static NetWorkEngine * sharedNetWorkEngine = NULL;
                                                    andGetParams:getParams
                                                   andPostParams:nil
                                                    andSuccBlock:reciveInviteUser
-                                                   andFailBlock:reciveInviteUserFail];
+                                                    andFailBlock:reciveInviteUserFail];
 
 
 }
@@ -1167,11 +1167,9 @@ static NetWorkEngine * sharedNetWorkEngine = NULL;
     reciveInviteUserFail = ^(ASIHTTPRequest * request) {
         DLog(@"receive phoneOutByUserId return");
     };
-    [[SJNetworkService shareInstance] asynRequestWithMethodName:@"PhoneOut"
+    [[SJNetworkService shareInstance] syncRequestWithMethodName:@"PhoneOut"
                                                    andGetParams:getParams
-                                                  andPostParams:nil
-                                                   andSuccBlock:reciveInviteUser
-                                                   andFailBlock:reciveInviteUserFail];
+                                                  andPostParams:nil];
     
     
 }
@@ -1404,7 +1402,7 @@ static NetWorkEngine * sharedNetWorkEngine = NULL;
         void (^reciveInviteUser)(ASIHTTPRequest * request);
         reciveInviteUser = ^(ASIHTTPRequest * request) {
             DLog(@"receive GetMyServiceList return");
-            __block NSDictionary *returnData = [[request responseData] objectFromJSONData];
+            __block NSArray *returnData = [[request responseData] objectFromJSONData];
             if (returnData)
             {
                 if (aDelegate &&
@@ -1610,4 +1608,78 @@ static NetWorkEngine * sharedNetWorkEngine = NULL;
     }
     
 }
+
+/**
+ *	@brief	获取多人预约信息
+ *
+ *	@param 	sUserId 	自己id，获取收款人列表
+ *	@param 	aUserI 	自己id，获取付款人列表
+ */
+- (void)getRequestByRequestId:(NSString*)sUserId
+                 orResponseId:(NSString*)aUserI
+                    ddelegate:(id) aDelegate
+                          sel:(SEL) aSel
+{
+    {
+        NSMutableDictionary *getParams = [[NSMutableDictionary alloc]init];
+        [getParams assemblyValue:sUserId key:@"request_id" optional:YES];
+        [getParams assemblyValue:aUserI key:@"response_id" optional:YES];
+        //成功回調
+        void (^reciveInviteUser)(ASIHTTPRequest * request);
+        reciveInviteUser = ^(ASIHTTPRequest * request) {
+            DLog(@"receive getRequestByRequestId return");
+            __block NSDictionary *returnData = [[request responseData] objectFromJSONData];
+            if (returnData)
+            {
+                if (aDelegate &&
+                    [aDelegate respondsToSelector:aSel])
+                {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+                    
+                    [aDelegate performSelector:aSel
+                                    withObject:[returnData objectForKey:@"data"]];
+#pragma clang diagnostic pop
+                    
+                }
+            }
+            else {
+                if (aDelegate &&
+                    [aDelegate respondsToSelector:aSel])
+                {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+                    
+                    [aDelegate performSelector:aSel
+                                    withObject:nil];
+#pragma clang diagnostic pop
+                    
+                }
+            }
+        };
+        //失敗回調
+        void (^reciveInviteUserFail)(ASIHTTPRequest * request);
+        reciveInviteUserFail = ^(ASIHTTPRequest * request) {
+            DLog(@"receive getRequestByRequestId return");
+            if (aDelegate &&
+                [aDelegate respondsToSelector:aSel])
+            {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+                
+                [aDelegate performSelector:aSel
+                                withObject:nil];
+#pragma clang diagnostic pop
+                
+            }
+        };
+        [[SJNetworkService shareInstance] asynRequestWithMethodName:@"GetRequest"
+                                                       andGetParams:getParams
+                                                      andPostParams:nil
+                                                       andSuccBlock:reciveInviteUser
+                                                       andFailBlock:reciveInviteUserFail];
+    }
+    
+}
+
 @end

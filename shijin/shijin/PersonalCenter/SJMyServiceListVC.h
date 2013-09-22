@@ -11,6 +11,6 @@
 @interface SJMyServiceListVC : UIViewController<UITableViewDataSource, UITableViewDelegate>
 {
     UITableView *_iTable;
-    NSArray *_iDataArr;
+    NSMutableArray *_iDataArr;
 }
 @end

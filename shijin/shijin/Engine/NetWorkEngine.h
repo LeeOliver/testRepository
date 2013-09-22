@@ -287,4 +287,14 @@
                             delegate:(id) aDelegate
                                  sel:(SEL) aSel;
 
+/**
+ *	@brief	获取多人预约信息
+ *
+ *	@param 	sUserId 	自己id，获取收款人列表
+ *	@param 	aUserI 	自己id，获取付款人列表
+ */
+- (void)getRequestByRequestId:(NSString*)sUserId
+                 orResponseId:(NSString*)aUserI
+                    ddelegate:(id) aDelegate
+                          sel:(SEL) aSel;
 @end

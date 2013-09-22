@@ -11,6 +11,16 @@
 		1801039917D5A5E9001CB470 /* reservation_receive_request.png in Resources */ = {isa = PBXBuildFile; fileRef = 1801039717D5A5E9001CB470 /* reservation_receive_request.png */; };
 		1801039A17D5A5E9001CB470 /* reservation_receive_request@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1801039817D5A5E9001CB470 /* reservation_receive_request@2x.png */; };
 		18069A3917C721BF0081A38C /* SJCollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18069A3817C721BF0081A38C /* SJCollectionVC.m */; };
+		180A3A3117E2E08900451AF8 /* consulting_bigline.png in Resources */ = {isa = PBXBuildFile; fileRef = 180A3A2817E2E08900451AF8 /* consulting_bigline.png */; };
+		180A3A3217E2E08900451AF8 /* consulting_bigline@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 180A3A2917E2E08900451AF8 /* consulting_bigline@2x.png */; };
+		180A3A3317E2E08900451AF8 /* consulting_body.png in Resources */ = {isa = PBXBuildFile; fileRef = 180A3A2A17E2E08900451AF8 /* consulting_body.png */; };
+		180A3A3417E2E08900451AF8 /* consulting_body@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 180A3A2B17E2E08900451AF8 /* consulting_body@2x.png */; };
+		180A3A3517E2E08900451AF8 /* consulting_line.png in Resources */ = {isa = PBXBuildFile; fileRef = 180A3A2C17E2E08900451AF8 /* consulting_line.png */; };
+		180A3A3617E2E08900451AF8 /* consulting_name.png in Resources */ = {isa = PBXBuildFile; fileRef = 180A3A2D17E2E08900451AF8 /* consulting_name.png */; };
+		180A3A3717E2E08900451AF8 /* consulting_name@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 180A3A2E17E2E08900451AF8 /* consulting_name@2x.png */; };
+		180A3A3817E2E08900451AF8 /* consulting_top.png in Resources */ = {isa = PBXBuildFile; fileRef = 180A3A2F17E2E08900451AF8 /* consulting_top.png */; };
+		180A3A3917E2E08900451AF8 /* consulting_top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 180A3A3017E2E08900451AF8 /* consulting_top@2x.png */; };
+		180A3A3C17E30B3A00451AF8 /* SJAddOrUpdateServiceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 180A3A3B17E30B3A00451AF8 /* SJAddOrUpdateServiceVC.m */; };
 		1810C90817DD6C70003EA3F0 /* ClockView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1810C90717DD6C70003EA3F0 /* ClockView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1810C92217DDB553003EA3F0 /* clock-bbg.png in Resources */ = {isa = PBXBuildFile; fileRef = 1810C91A17DDB553003EA3F0 /* clock-bbg.png */; };
 		1810C92317DDB553003EA3F0 /* clock-bbg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1810C91B17DDB553003EA3F0 /* clock-bbg@2x.png */; };
@@ -270,6 +280,17 @@
 		1801039817D5A5E9001CB470 /* reservation_receive_request@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reservation_receive_request@2x.png"; sourceTree = "<group>"; };
 		18069A3717C721BF0081A38C /* SJCollectionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SJCollectionVC.h; path = ReservationConsultation/SJCollectionVC.h; sourceTree = "<group>"; };
 		18069A3817C721BF0081A38C /* SJCollectionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SJCollectionVC.m; path = ReservationConsultation/SJCollectionVC.m; sourceTree = "<group>"; };
+		180A3A2817E2E08900451AF8 /* consulting_bigline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = consulting_bigline.png; sourceTree = "<group>"; };
+		180A3A2917E2E08900451AF8 /* consulting_bigline@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "consulting_bigline@2x.png"; sourceTree = "<group>"; };
+		180A3A2A17E2E08900451AF8 /* consulting_body.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = consulting_body.png; sourceTree = "<group>"; };
+		180A3A2B17E2E08900451AF8 /* consulting_body@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "consulting_body@2x.png"; sourceTree = "<group>"; };
+		180A3A2C17E2E08900451AF8 /* consulting_line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = consulting_line.png; sourceTree = "<group>"; };
+		180A3A2D17E2E08900451AF8 /* consulting_name.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = consulting_name.png; sourceTree = "<group>"; };
+		180A3A2E17E2E08900451AF8 /* consulting_name@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "consulting_name@2x.png"; sourceTree = "<group>"; };
+		180A3A2F17E2E08900451AF8 /* consulting_top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = consulting_top.png; sourceTree = "<group>"; };
+		180A3A3017E2E08900451AF8 /* consulting_top@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "consulting_top@2x.png"; sourceTree = "<group>"; };
+		180A3A3A17E30B3900451AF8 /* SJAddOrUpdateServiceVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SJAddOrUpdateServiceVC.h; path = PersonalCenter/SJAddOrUpdateServiceVC.h; sourceTree = "<group>"; };
+		180A3A3B17E30B3A00451AF8 /* SJAddOrUpdateServiceVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SJAddOrUpdateServiceVC.m; path = PersonalCenter/SJAddOrUpdateServiceVC.m; sourceTree = "<group>"; };
 		1810C90617DD6C70003EA3F0 /* ClockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ClockView.h; path = ThirdPart/ClockView.h; sourceTree = "<group>"; };
 		1810C90717DD6C70003EA3F0 /* ClockView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ClockView.m; path = ThirdPart/ClockView.m; sourceTree = "<group>"; };
 		1810C91A17DDB553003EA3F0 /* clock-bbg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-bbg.png"; sourceTree = "<group>"; };
@@ -588,6 +609,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		180A3A2717E2E08900451AF8 /* management */ = {
+			isa = PBXGroup;
+			children = (
+				180A3A2817E2E08900451AF8 /* consulting_bigline.png */,
+				180A3A2917E2E08900451AF8 /* consulting_bigline@2x.png */,
+				180A3A2A17E2E08900451AF8 /* consulting_body.png */,
+				180A3A2B17E2E08900451AF8 /* consulting_body@2x.png */,
+				180A3A2C17E2E08900451AF8 /* consulting_line.png */,
+				180A3A2D17E2E08900451AF8 /* consulting_name.png */,
+				180A3A2E17E2E08900451AF8 /* consulting_name@2x.png */,
+				180A3A2F17E2E08900451AF8 /* consulting_top.png */,
+				180A3A3017E2E08900451AF8 /* consulting_top@2x.png */,
+			);
+			path = management;
+			sourceTree = "<group>";
+		};
 		1810C91917DDB553003EA3F0 /* clock */ = {
 			isa = PBXGroup;
 			children = (
@@ -894,6 +931,7 @@
 		18F3761117B328500081D9DE /* center */ = {
 			isa = PBXGroup;
 			children = (
+				180A3A2717E2E08900451AF8 /* management */,
 				185B897617D9A10100B59CEB /* center_alipay_line.png */,
 				185B897717D9A10100B59CEB /* center_alipay_line@2x.png */,
 				185B896617D99F9300B59CEB /* center_alipay_bg.png */,
@@ -942,6 +980,8 @@
 				182E5EA217E15B6000EA06FB /* SJMutableCollectionListVC.m */,
 				182E5EA917E1FBBA00EA06FB /* SJMyServiceListVC.h */,
 				182E5EAA17E1FBBA00EA06FB /* SJMyServiceListVC.m */,
+				180A3A3A17E30B3900451AF8 /* SJAddOrUpdateServiceVC.h */,
+				180A3A3B17E30B3A00451AF8 /* SJAddOrUpdateServiceVC.m */,
 			);
 			name = "Personal center";
 			sourceTree = "<group>";
@@ -1355,6 +1395,15 @@
 				1810C92B17DDB9CB003EA3F0 /* clock-secound@2x.png in Resources */,
 				18270D5917DEEF1E00DE28EA /* clock_big_bg.png in Resources */,
 				18270D5A17DEEF1E00DE28EA /* clock_big_bg@2x.png in Resources */,
+				180A3A3117E2E08900451AF8 /* consulting_bigline.png in Resources */,
+				180A3A3217E2E08900451AF8 /* consulting_bigline@2x.png in Resources */,
+				180A3A3317E2E08900451AF8 /* consulting_body.png in Resources */,
+				180A3A3417E2E08900451AF8 /* consulting_body@2x.png in Resources */,
+				180A3A3517E2E08900451AF8 /* consulting_line.png in Resources */,
+				180A3A3617E2E08900451AF8 /* consulting_name.png in Resources */,
+				180A3A3717E2E08900451AF8 /* consulting_name@2x.png in Resources */,
+				180A3A3817E2E08900451AF8 /* consulting_top.png in Resources */,
+				180A3A3917E2E08900451AF8 /* consulting_top@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1429,6 +1478,7 @@
 				182E5EA317E15B6000EA06FB /* SJMutableCollectionListVC.m in Sources */,
 				182E5EA617E163D800EA06FB /* SJPushEngine.m in Sources */,
 				182E5EAB17E1FBBA00EA06FB /* SJMyServiceListVC.m in Sources */,
+				180A3A3C17E30B3A00451AF8 /* SJAddOrUpdateServiceVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1489,8 +1539,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "AFBA0547-07E9-4118-A426-ADAF21DB9FEB";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "AFBA0547-07E9-4118-A426-ADAF21DB9FEB";
+				PROVISIONING_PROFILE = "A8869710-1333-4AFA-8EBB-AB9669941298";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A8869710-1333-4AFA-8EBB-AB9669941298";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1517,8 +1567,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "AFBA0547-07E9-4118-A426-ADAF21DB9FEB";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "AFBA0547-07E9-4118-A426-ADAF21DB9FEB";
+				PROVISIONING_PROFILE = "A8869710-1333-4AFA-8EBB-AB9669941298";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A8869710-1333-4AFA-8EBB-AB9669941298";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1541,8 +1591,8 @@
 				);
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "时金";
-				PROVISIONING_PROFILE = "AFBA0547-07E9-4118-A426-ADAF21DB9FEB";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "AFBA0547-07E9-4118-A426-ADAF21DB9FEB";
+				PROVISIONING_PROFILE = "A8869710-1333-4AFA-8EBB-AB9669941298";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A8869710-1333-4AFA-8EBB-AB9669941298";
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1564,8 +1614,8 @@
 				);
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "时金";
-				PROVISIONING_PROFILE = "AFBA0547-07E9-4118-A426-ADAF21DB9FEB";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "AFBA0547-07E9-4118-A426-ADAF21DB9FEB";
+				PROVISIONING_PROFILE = "A8869710-1333-4AFA-8EBB-AB9669941298";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A8869710-1333-4AFA-8EBB-AB9669941298";
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = app;
 			};

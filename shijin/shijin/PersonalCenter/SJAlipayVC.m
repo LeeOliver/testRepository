@@ -50,11 +50,11 @@
     [backBtn addTarget:self action:@selector(popViewController) forControlEvents:UIControlEventTouchUpInside];
     [topView addSubview:backBtn];
     
-    UIButton *titleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [titleBtn setBackgroundImage:[UIImage imageNamed:@"center_title.png"] forState:UIControlStateNormal];
-    titleBtn.frame = CGRectMake(0, 0, 82, 32);
-    titleBtn.center = CGPointMake(MAINSCREENWIDTH/2, 25);
-    [topView addSubview:titleBtn];
+//    UIButton *titleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [titleBtn setBackgroundImage:[UIImage imageNamed:@"center_title.png"] forState:UIControlStateNormal];
+//    titleBtn.frame = CGRectMake(0, 0, 82, 32);
+//    titleBtn.center = CGPointMake(MAINSCREENWIDTH/2, 25);
+//    [topView addSubview:titleBtn];
     
     [self.view addSubview:topView];
     

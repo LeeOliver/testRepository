@@ -34,7 +34,6 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
-//    self.window.rootViewController = [[SJPersonalCenterVC alloc]init];
     [self autoLogin];
     [self.window makeKeyAndVisible];
     return YES;
@@ -48,57 +47,43 @@
 //    switch ([soundValue intValue]) {
 //        case kCOLLECTION_NORMAL:
 //        {
-//            self.kUIflag = kCOLLECTIONUI_I;
-//            self.kSystemFlag = kCOLLECTION_NORMAL;
 //        }
 //            break;
 //        case kCOLLECTION_REQUEST:
 //        {
-//            self.kUIflag = kCOLLECTIONUI_II;
-//            self.kSystemFlag = kCOLLECTION_REQUEST;
+//            self.kUIflag =  kRESERVATIONUI_III;
+//            [self enterReservation:_reservationVC.navigationController andData:nil andUIFlag:kRESERVATIONUI_III];
 //        }
 //            break;
 //        case kCOLLECTION_START:
 //        {
-//            self.kUIflag = kCOLLECTIONUI_III;
-//            self.kSystemFlag = kCOLLECTION_START;
 //        }
-//
 //            break;
 //        case kCOLLECTION_END:
 //        {
-//            self.kUIflag = kCOLLECTIONUI_IV;
-//            self.kSystemFlag = kCOLLECTION_END;
 //        }
-//
 //            break;
 //        case kRESERVATION_SEND:
 //        {
-//            self.kUIflag = kRESERVATIONUI_I;
-//            self.kSystemFlag = kRESERVATION_SEND;
+//            self.kUIflag = kCOLLECTIONUI_II;
+//            [self enterCollection:_reservationVC.navigationController andData:nil andUIFlag:kCOLLECTIONUI_II];
 //        }
-//
 //            break;
 //        case kRESERVATION_UPDATA:
 //        {
-//            self.kUIflag = kRESERVATIONUI_II;
-//            self.kSystemFlag = kRESERVATION_SEND;
 //        }
-//
 //            break;
 //        case kRESERVATION_START:
 //        {
-//            self.kUIflag = kRESERVATIONUI_III;
-//            self.kSystemFlag = kRESERVATION_START;
+//            self.kUIflag = kCOLLECTIONUI_III;
+//            [self enterCollection:_reservationVC.navigationController andData:nil andUIFlag:kCOLLECTIONUI_III];
 //        }
-//
 //            break;
 //        case kRESERVATION_END:
 //        {
-//            self.kUIflag = kRESERVATIONUI_IV;
-//            self.kSystemFlag = kRESERVATION_END;
+//            self.kUIflag = kCOLLECTIONUI_IV;
+//            [self enterCollection:_reservationVC.navigationController andData:nil andUIFlag:kCOLLECTIONUI_IV];
 //        }
-//
 //            break;
 //        default:
 //            break;
@@ -145,7 +130,7 @@
     tokeStr = [tokeStr stringByTrimmingCharactersInSet:set]; 
     tokeStr = [tokeStr stringByReplacingOccurrencesOfString:@" " withString:@""];
     _token = tokeStr;
-    [[SJPushEngine shareInstance] pushWithAlert:@"欢迎使用时金系统1" andOtherTokenStr:tokeStr andBody:@""];
+//    [[SJPushEngine shareInstance] pushWithAlert:@"欢迎使用时金系统1" andOtherTokenStr:tokeStr andBody:@""];
 }
 - (void)addRegisterForRemoteNotification:(UIApplication *)application
 {
@@ -156,7 +141,7 @@
       UIRemoteNotificationTypeAlert)];
 
     //设置图标标记
-    application.applicationIconBadgeNumber = 1;
+//    application.applicationIconBadgeNumber = 1;
 
 }
 - (void)application:(UIApplication*)application
@@ -282,6 +267,9 @@ didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     NSLog(@"1111");
+    if ([NetWorkEngine shareInstance].personID && ![[NetWorkEngine shareInstance].personID isKindOfClass:[NSNull class]]) {
+        [[NetWorkEngine shareInstance]phoneOutByUserId:[NetWorkEngine shareInstance].personID];
+    }
     self.kSystemFlag = kRESERVATION_END;
     switch (self.kSystemFlag) {
         case kRESERVATION_SEND:
@@ -343,13 +331,19 @@ didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
+    NSLog(@"321");
+    if ([NetWorkEngine shareInstance].personID && ![[NetWorkEngine shareInstance].personID isKindOfClass:[NSNull class]]) {
+        [[NetWorkEngine shareInstance]addLastLoginTimeByUserId:[NetWorkEngine shareInstance].personID];
+    }
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     NSLog(@"123");
-    [[NetWorkEngine shareInstance]phoneOutByUserId:[NetWorkEngine shareInstance].personID];
+    if ([NetWorkEngine shareInstance].personID && ![[NetWorkEngine shareInstance].personID isKindOfClass:[NSNull class]]) {
+        [[NetWorkEngine shareInstance]phoneOutByUserId:[NetWorkEngine shareInstance].personID];
+    }
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 

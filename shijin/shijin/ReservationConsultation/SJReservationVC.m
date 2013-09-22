@@ -741,7 +741,7 @@
 {
     if ([[iDataArr objectForKey:@"flag"]isEqualToString:@"Y"]) {
         [_progressCircularView start];
-        [[SJTimeEngine shareInstance]loopTimerByTime:@"60" delegate:self sel:@selector(meeting)];
+//        [[SJTimeEngine shareInstance]loopTimerByTime:@"60" delegate:self sel:@selector(meeting)];
 
         [_startOrEndBtn setBackgroundImage:[UIImage imageNamed:@"reservation_end_request.png"] forState:UIControlStateNormal];
         
